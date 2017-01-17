@@ -1,0 +1,28 @@
+<div class="board" *ngIf="elementos">
+                    <div class="game-cell" *ngFor="let elemento of elementos; let i = index"  (click)="clickElemento(i)" [style.background-color]="getColor(elemento)">
+                    </div>
+                </div>
+<div class="container">    
+    <div id="toptenbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+                <div class="panel-title">BATTLESHIP - GAME BOARD</div>
+                
+            </div>     
+
+            <div style="padding-top:30px" class="panel-body" >
+                <div class="board" *ngIf="elementos">
+                    <div class="game-cell" *ngFor="let elemento of elementos; let i = index"  (click)="clickElemento(i)" [style.background-color]="getColor(elemento)">
+                    </div>
+                </div>
+                
+            </div> 
+            <div style="padding-top:30px; padding-bottom: 30px" class="panel-footer" >
+                <div style="float:right; font-size: 80%; position: relative; top:-10px; margin-bottom: 10px" >
+                    <a style="width:150px" id="btn-home" class="btn btn-danger" routerLink ="/gamelobby">Quit</a>
+                </div>
+                
+            </div>                    
+        </div>  
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="container">
+    <div id="gamelobby" style="margin-top:50px" class="mainbox col-md-12  col-sm-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Game Lobby </div>
+            </div>
+
+            <div style="padding-top:30px" class="panel-body">
+                <div style="float:right; font-size: 80%; position: relative; top:-10px">
+                    <a style="width:150px" id="btn-top10" class="btn btn-success" routerLink ="/topten">Top Ten</a>
+                    <a style="width:150px" id="btn-newGame" class="btn btn-info" routerLink ="/board">New Game</a>
+                </div>
+                <div id="pendingGames">
+                    <br>
+                    <h3 style="color:white!important">Pending Games </h3>
+                    <br>
+
+                    <div id="listpending">
+                        <table class="table table-bordered table-striped table-hover table-condensed table-hover table-responsive">
+                            <tr style="height:30px!important;">
+                                <th style="width:100px">Id</th>
+                                <th style="width:500px">Creator</th> 
+                                <th style="width:350px">Players Waiting</th>
+                                <th></th>
+                            </tr>
+                            <tr style="height:30px!important;">
+                                <td>1</td>
+                                <td>Ruben Bernardo</td> 
+                                <td>1</td>
+                                <td><a style="height:100%!important; width:100%!important; position:relative!important;"class="btn btn-success">Join</a></td>
+
+                            </tr>
+                            <tr style="height:30px!important;">
+                                <td style="height:10px;">2</td>
+                                <td>Bruno Paixão</td> 
+                                <td>2</td>
+                                <td ><a style="height:100%!important; width:100%!important; position:relative!important;" class="btn btn-success">Join</a></td>
+                            </tr>    
+                        </table>
+                    </div>
+                </div>
+
+                <div id="runningGames">
+                    <br>
+                    <h3 style="color:white!important">Running Games </h3>
+                    <br>
+                    <div id="listrunning">
+                        <table class="table table-bordered table-striped table-hover table-condensed table-hover table-responsive">
+                            <tr>
+                                <th style="width:100px">Id</th>
+                                <th style="width:500px">Creator</th> 
+                                <th style="width:350px">Total Players</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Paulo Penicheiro</td> 
+                                <td>3</td>
+                                <td><a style="height:100%!important; width:100%!important; position:relative!important;"class="btn btn-primary">Watch</a></td>
+
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Bruno Paixão</td> 
+                                <td>2</td>
+                                <td><a style="height:100%!important; width:100%!important; position:relative!important;" class="btn btn-primary">Watch</a></td>
+                            </tr>    
+                                
+                        </table>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <chat-control></chat-control>
+                </div>
+                <div>
+                    <notification-panel></notification-panel>
+                </div>
+                <form role="form" >
+                    <div class="idlogout">.
+                            <br>
+                            <hr>
+                                    <a style="float:right;  position: relative;" class="btn btn-danger">Log Out</a>
+                            <br>
+                    </div>
+                </form>
+
+            </div><!-- end panel-body -->
+        </div><!-- end panel -->
+    </div><!-- end gamelobby -->
+</div><!-- end Container -->
