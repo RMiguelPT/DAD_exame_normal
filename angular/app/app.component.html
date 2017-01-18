@@ -11,10 +11,11 @@
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
-              <a routerLink ="/login">Log In</a>
+              <a *ngIf="isLogged()==false" routerLink ="/login">Log In</a>
+              <button style="float:right;  position: relative;" *ngIf="isLogged()==true" (click)="logout()" class="btn btn-danger">Log Out</button>
             </li>
             <li>
-              <a routerLink ="/signup">Sign Up</a>
+              <a *ngIf="isLogged()==false" routerLink ="/signup">Sign Up</a>
             </li>
             <li>
               <a routerLink ="/gamelobby">Lobby</a>
