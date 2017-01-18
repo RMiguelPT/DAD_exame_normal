@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
-var GameLobbyComponent = (function () {
-    function GameLobbyComponent(router, http) {
+var LogOutComponent = (function () {
+    function LogOutComponent(router, http) {
         this.router = router;
         this.http = http;
         this.player = '';
@@ -20,7 +20,7 @@ var GameLobbyComponent = (function () {
         this.pathLogout = 'http://localhost:7777/api/v1/';
         this.isLogged = true;
     }
-    GameLobbyComponent.prototype.logout = function () {
+    LogOutComponent.prototype.logout = function () {
         var _this = this;
         var authToken = sessionStorage.getItem('id_token');
         console.log(authToken);
@@ -33,6 +33,7 @@ var GameLobbyComponent = (function () {
             .post(this.pathLogout + 'logout', body, { headers: headers, withCredentials: false })
             .subscribe(function (response) {
             if (response.ok) {
+                alert("Logout success");
                 _this.isLogged = false;
                 sessionStorage.clear();
                 _this.router.navigate(['login']);
@@ -42,15 +43,15 @@ var GameLobbyComponent = (function () {
             console.log(error.text());
         });
     };
-    return GameLobbyComponent;
+    return LogOutComponent;
 }());
-GameLobbyComponent = __decorate([
+LogOutComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'my-app',
-        templateUrl: "gamelobby.component.html"
+        templateUrl: "logout.component.html"
     }),
     __metadata("design:paramtypes", [router_1.Router, http_1.Http])
-], GameLobbyComponent);
-exports.GameLobbyComponent = GameLobbyComponent;
-//# sourceMappingURL=gamelobby.component.js.map
+], LogOutComponent);
+exports.LogOutComponent = LogOutComponent;
+//# sourceMappingURL=logout.component.js.map

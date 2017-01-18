@@ -10,19 +10,21 @@ import { Router } from '@angular/router';
 @Component({
     moduleId: module.id,
     selector: 'my-app',
-    templateUrl: `gamelobby.component.html`
+    templateUrl: `logout.component.html`
 })
-export class GameLobbyComponent { 
-        public player = '';
-        public islogged = false;
-        public pathLogout = 'http://localhost:7777/api/v1/';
-        public isLogged = true;
+export class LogOutComponent {
+    public player = '';
+    public islogged = false;
+    public pathLogout = 'http://localhost:7777/api/v1/';
+    public isLogged = true;
 
-    constructor (public router: Router,public http: Http){
+     constructor (public router: Router,public http: Http){
        
     }
 
-    logout() {
+
+
+logout() {
 
     let authToken = sessionStorage.getItem('id_token');
     console.log(authToken);
@@ -39,6 +41,9 @@ export class GameLobbyComponent {
 
 
         if (response.ok) {
+          alert("Logout success");
+
+
           this.isLogged = false;
           sessionStorage.clear();
           this.router.navigate(['login']);

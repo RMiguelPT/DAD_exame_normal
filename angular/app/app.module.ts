@@ -11,13 +11,14 @@ import {BoardComponent} from './game/board.component';
 import { WebSocketService } from './notifications/websocket.service';
 import { AboutComponent }  from './about/about.component';
 import { LoginComponent } from './login/login.component';
+import { LogOutComponent } from './logout/logout.component';
 import { SignUpComponent } from './signup/signup.component';
 import { GameLobbyComponent } from './gamelobby/gamelobby.component';
 import { TopTenComponent } from './topten/topten.component';
 
 @NgModule({
   imports:      [ BrowserModule, NotificationModule, FormsModule, HttpModule,routes ],
-  declarations: [ AppComponent, ChatComponent, BoardComponent, AboutComponent, LoginComponent, SignUpComponent, GameLobbyComponent, TopTenComponent ],
+  declarations: [ AppComponent, ChatComponent, BoardComponent, AboutComponent, LoginComponent,LogOutComponent, SignUpComponent, GameLobbyComponent, TopTenComponent ],
   providers:    [ WebSocketService ],
   bootstrap:    [ AppComponent ]
 })

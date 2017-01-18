@@ -61,7 +61,7 @@
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Bruno Paixão</td> 
+                                <td>Álvaro Neves</td> 
                                 <td>2</td>
                                 <td><a style="height:100%!important; width:100%!important; position:relative!important;" class="btn btn-primary">Watch</a></td>
                             </tr>    
@@ -76,11 +76,11 @@
                 <div>
                     <notification-panel></notification-panel>
                 </div>
-                <form role="form" >
+                <form role="form" (submit)="logout()" >
                     <div class="idlogout">.
                             <br>
                             <hr>
-                                    <a style="float:right;  position: relative;" class="btn btn-danger">Log Out</a>
+                                <button type="submit" style="float:right;  position: relative;" class="btn btn-danger">Log Out</button>
                             <br>
                     </div>
                 </form>
