@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 //import { Authentication } from '../../node/app.authentication';
+=======
+import { Authentication } from '../../node/app.authentication';
+import { ValidationService } from "./_services/validation.service";
+>>>>>>> 6ddab7a7ad03761f18893f1514e8688300569dcd
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
@@ -25,7 +30,7 @@ import { AuthenticationService } from './_services/authentication.service';
 @NgModule({
   imports:      [ BrowserModule, NotificationModule, FormsModule, HttpModule,routes ],
   declarations: [ AppComponent, ChatComponent, BoardComponent, AboutComponent, LoginComponent,LogOutComponent, SignUpComponent, GameLobbyComponent, TopTenComponent ],
-  providers:    [ WebSocketService, AuthenticationService ],
+  providers:    [ WebSocketService, AuthenticationService, ValidationService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

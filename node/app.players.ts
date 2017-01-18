@@ -94,9 +94,8 @@ export class Player {
             return next();
         }
         
-        console.log(player.password);
-        //player.password = sha1(player.password);
-        console.log(player);
+       
+        player.passwordHash = sha1(player.passwordHash);
         database.db.collection('players')
             .insertOne(player)
             .then(result => this.returnPlayer(result.insertedId, response, next))

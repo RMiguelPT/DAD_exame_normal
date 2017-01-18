@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ValidationService } from "./../_services/validation.service";
 import { router } from "./../app.router";
 import { FormsModule } from '@angular/forms';
 import { Http, Response, Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
@@ -15,12 +16,16 @@ export class SignUpComponent {
     public serverPath: string;
     
     
-    constructor(public router: Router, public http: Http) {
+    constructor(public router: Router, public http: Http, private validation: ValidationService) {
           this.serverPath = 'http://localhost:7777/api/v1/players'
 
     }
+
+    validate(name: any, username: any, password: any, confirmpassword: any, email: any) {
+        return true;
+    }
     
-    createPlayer(name: any, username: any, passwordHash: any, passwordConfirmation: any, email: any) {
+    createPlayer(name: any, username: any, passwordHash: any, confirmpassword: any, email: any) {
         console.log("Entrou - SIGNUP");
         let avatar = "";
         let totalVictories = 0;
@@ -32,7 +37,6 @@ export class SignUpComponent {
             .post(this.serverPath, body, <RequestOptionsArgs>{ headers: headers, withCredentials: false })
             .subscribe(
             response => {
-                alert("Registation success");
                 this.router.navigate(['login']);
             },
             error => {
