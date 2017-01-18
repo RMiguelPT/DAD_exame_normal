@@ -9,15 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var validation_service_1 = require("./../_services/validation.service");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var SignUpComponent = (function () {
-    function SignUpComponent(router, http) {
+    function SignUpComponent(router, http, validation) {
         this.router = router;
         this.http = http;
+        this.validation = validation;
         this.serverPath = 'http://localhost:7777/api/v1/players';
     }
-    SignUpComponent.prototype.createPlayer = function (name, username, passwordHash, passwordConfirmation, email) {
+    SignUpComponent.prototype.validate = function (name, username, password, confirmpassword, email) {
+        return true;
+    };
+    SignUpComponent.prototype.createPlayer = function (name, username, passwordHash, confirmpassword, email) {
         var _this = this;
         console.log("Entrou - SIGNUP");
         var avatar = "";
@@ -28,7 +33,6 @@ var SignUpComponent = (function () {
         this.http
             .post(this.serverPath, body, { headers: headers, withCredentials: false })
             .subscribe(function (response) {
-            alert("Registation success");
             _this.router.navigate(['login']);
         }, function (error) {
             alert(error.text());
@@ -43,7 +47,7 @@ SignUpComponent = __decorate([
         selector: 'my-app',
         templateUrl: "signup.component.html"
     }),
-    __metadata("design:paramtypes", [router_1.Router, http_1.Http])
+    __metadata("design:paramtypes", [router_1.Router, http_1.Http, validation_service_1.ValidationService])
 ], SignUpComponent);
 exports.SignUpComponent = SignUpComponent;
 //# sourceMappingURL=signup.component.js.map

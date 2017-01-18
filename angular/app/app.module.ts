@@ -1,4 +1,5 @@
 import { Authentication } from '../../node/app.authentication';
+import { ValidationService } from "./_services/validation.service";
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
@@ -25,7 +26,7 @@ import { AuthenticationService } from './_services/authentication.service';
 @NgModule({
   imports:      [ BrowserModule, NotificationModule, FormsModule, HttpModule,routes ],
   declarations: [ AppComponent, ChatComponent, BoardComponent, AboutComponent, LoginComponent,LogOutComponent, SignUpComponent, GameLobbyComponent, TopTenComponent ],
-  providers:    [ WebSocketService, AuthenticationService ],
+  providers:    [ WebSocketService, AuthenticationService, ValidationService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
