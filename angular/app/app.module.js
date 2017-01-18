@@ -21,6 +21,8 @@ var logout_component_1 = require("./logout/logout.component");
 var signup_component_1 = require("./signup/signup.component");
 var gamelobby_component_1 = require("./gamelobby/gamelobby.component");
 var topten_component_1 = require("./topten/topten.component");
+//services
+var authentication_service_1 = require("./_services/authentication.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,7 +32,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, notifications_module_1.NotificationModule, forms_1.FormsModule, http_1.HttpModule, app_router_1.routes],
         declarations: [app_component_1.AppComponent, chat_component_1.ChatComponent, board_component_1.BoardComponent, about_component_1.AboutComponent, login_component_1.LoginComponent, logout_component_1.LogOutComponent, signup_component_1.SignUpComponent, gamelobby_component_1.GameLobbyComponent, topten_component_1.TopTenComponent],
-        providers: [websocket_service_1.WebSocketService],
+        providers: [websocket_service_1.WebSocketService, authentication_service_1.AuthenticationService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

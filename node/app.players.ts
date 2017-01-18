@@ -28,6 +28,22 @@ export class Player {
             .catch(err => this.handleError(err, response, next));
     }
 
+    private returnPlayerByToken = (token:string, response: any, next: any) => {
+        database.db.collection('players')
+            .findOne({
+                id_token: token
+            })
+            .then((player) => {
+                if (player === null) {
+                    response.send(404, 'Player not found');
+                } else {
+                    response.json(player);
+                }
+                next();
+            })
+            .catch(err => this.handleError(err, response, next));
+    }
+
     public getPlayers = (request: any, response: any, next: any) => {
         database.db.collection('players')
             .find()
@@ -43,6 +59,12 @@ export class Player {
         const id = new mongodb.ObjectID(request.params.id);
         this.returnPlayer(id, response, next);
     }
+
+    public getPlayerByToken =  (request: any, response: any, next: any) => {
+        const token = request.params.token;
+        this.returnPlayerByToken(token, response, next);
+    }
+    
     
     public updatePlayer = (request: any, response: any, next: any) => {
         const id = new mongodb.ObjectID(request.params.id);
@@ -114,6 +136,7 @@ export class Player {
         server.get(settings.prefix + 'top10', this.getTop10);
         server.get(settings.prefix + 'players', settings.security.authorize, this.getPlayers);
         server.get(settings.prefix + 'players/:id', settings.security.authorize, this.getPlayer);
+        server.get(settings.prefix + 'players/:token', settings.security.authorize, this.getPlayerByToken);
         server.put(settings.prefix + 'players/:id', settings.security.authorize, this.updatePlayer);
         server.post(settings.prefix + 'players', this.createPlayer);
         server.del(settings.prefix + 'players/:id', settings.security.authorize, this.deletePlayer);

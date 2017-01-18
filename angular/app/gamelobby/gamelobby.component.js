@@ -11,36 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
+var authentication_service_1 = require("./../_services/authentication.service");
 var GameLobbyComponent = (function () {
-    function GameLobbyComponent(router, http) {
+    function GameLobbyComponent(router, http, authenticationService) {
         this.router = router;
         this.http = http;
-        this.player = '';
+        this.authenticationService = authenticationService;
+        this.player = sessionStorage.getItem('_id').toString();
         this.islogged = false;
         this.pathLogout = 'http://localhost:7777/api/v1/';
         this.isLogged = true;
     }
-    GameLobbyComponent.prototype.logout = function () {
-        var _this = this;
-        var authToken = sessionStorage.getItem('id_token');
-        console.log(authToken);
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', 'bearer ' + authToken);
-        var body = JSON.stringify({});
-        console.log(headers);
-        this.http
-            .post(this.pathLogout + 'logout', body, { headers: headers, withCredentials: false })
-            .subscribe(function (response) {
-            if (response.ok) {
-                _this.isLogged = false;
-                sessionStorage.clear();
-                _this.router.navigate(['login']);
-            }
-        }, function (error) {
-            alert(error.text());
-            console.log(error.text());
-        });
+    GameLobbyComponent.prototype.logout = function (event, username, password) {
+        this.authenticationService.logout();
     };
     return GameLobbyComponent;
 }());
@@ -50,7 +33,7 @@ GameLobbyComponent = __decorate([
         selector: 'my-app',
         templateUrl: "gamelobby.component.html"
     }),
-    __metadata("design:paramtypes", [router_1.Router, http_1.Http])
+    __metadata("design:paramtypes", [router_1.Router, http_1.Http, authentication_service_1.AuthenticationService])
 ], GameLobbyComponent);
 exports.GameLobbyComponent = GameLobbyComponent;
 //# sourceMappingURL=gamelobby.component.js.map

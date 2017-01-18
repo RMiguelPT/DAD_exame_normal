@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Http, Response, Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import {Routes, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { AuthenticationService } from './../_services/authentication.service';
 
 
 
@@ -13,42 +14,17 @@ import { Router } from '@angular/router';
     templateUrl: `gamelobby.component.html`
 })
 export class GameLobbyComponent { 
-        public player = '';
+        public player = sessionStorage.getItem('_id').toString();
         public islogged = false;
         public pathLogout = 'http://localhost:7777/api/v1/';
         public isLogged = true;
 
-    constructor (public router: Router,public http: Http){
+    constructor (public router: Router,public http: Http, private authenticationService: AuthenticationService){
        
     }
 
-    logout() {
 
-    let authToken = sessionStorage.getItem('id_token');
-    console.log(authToken);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Authorization', 'bearer ' + authToken);
-    let body = JSON.stringify({});
-    console.log(headers);
-
-    this.http
-      .post(this.pathLogout + 'logout', body,
-      <RequestOptionsArgs>{ headers: headers, withCredentials: false })
-      .subscribe(response => {
-
-
-        if (response.ok) {
-          this.isLogged = false;
-          sessionStorage.clear();
-          this.router.navigate(['login']);
-        }
-
-      },
-      error => {
-        alert(error.text());
-        console.log(error.text());
-      }
-      );
+    logout(event: any, username: any, password: any) {
+      this.authenticationService.logout();
   }
 }
