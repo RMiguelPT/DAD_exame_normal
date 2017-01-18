@@ -8,6 +8,7 @@ var gamelobby_component_1 = require("./gamelobby/gamelobby.component");
 var topten_component_1 = require("./topten/topten.component");
 var board_component_1 = require("./game/board.component");
 exports.router = [
+    { path: '', component: app_component_1.AppComponent },
     { path: 'home', component: app_component_1.AppComponent },
     { path: 'about', component: about_component_1.AboutComponent },
     { path: 'login', component: login_component_1.LoginComponent },

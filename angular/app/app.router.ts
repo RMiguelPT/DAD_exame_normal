@@ -10,6 +10,7 @@ import { TopTenComponent } from './topten/topten.component';
 import { BoardComponent } from './game/board.component';
 
 export const router: Routes = [
+    {path: '', component: AppComponent},
     {path: 'home', component: AppComponent},
     {path: 'about', component: AboutComponent},
     {path: 'login', component: LoginComponent},
