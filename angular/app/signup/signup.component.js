@@ -15,6 +15,7 @@ var SignUpComponent = (function () {
     function SignUpComponent(router, http) {
         this.router = router;
         this.http = http;
+        this.serverPath = 'http://localhost:7777/api/v1/players';
     }
     SignUpComponent.prototype.createPlayer = function (name, username, passwordHash, passwordConfirmation, email) {
         var _this = this;
@@ -25,7 +26,7 @@ var SignUpComponent = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         this.http
-            .post('http://localhost:7777/api/v1/players/createPlayer', body, { headers: headers, withCredentials: false })
+            .post(this.serverPath, body, { headers: headers, withCredentials: false })
             .subscribe(function (response) {
             alert("Registation success");
             _this.router.navigate(['login']);

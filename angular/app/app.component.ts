@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Routes, RouterModule } from '@angular/router';
+import { router } from "./app.router";
 
 @Component({
     moduleId: module.id,

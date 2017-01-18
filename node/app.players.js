@@ -1,6 +1,7 @@
 "use strict";
 var mongodb = require('mongodb');
 var util = require('util');
+var sha1 = require('sha1');
 var app_database_1 = require('./app.database');
 var Player = (function () {
     function Player() {
@@ -14,6 +15,22 @@ var Player = (function () {
             app_database_1.databaseConnection.db.collection('players')
                 .findOne({
                 _id: id
+            })
+                .then(function (player) {
+                if (player === null) {
+                    response.send(404, 'Player not found');
+                }
+                else {
+                    response.json(player);
+                }
+                next();
+            })
+                .catch(function (err) { return _this.handleError(err, response, next); });
+        };
+        this.returnPlayerByToken = function (token, response, next) {
+            app_database_1.databaseConnection.db.collection('players')
+                .findOne({
+                id_token: token
             })
                 .then(function (player) {
                 if (player === null) {
@@ -40,6 +57,10 @@ var Player = (function () {
             var id = new mongodb.ObjectID(request.params.id);
             _this.returnPlayer(id, response, next);
         };
+        this.getPlayerByToken = function (request, response, next) {
+            var token = request.params.token;
+            _this.returnPlayerByToken(token, response, next);
+        };
         this.updatePlayer = function (request, response, next) {
             var id = new mongodb.ObjectID(request.params.id);
             var player = request.body;
@@ -63,6 +84,8 @@ var Player = (function () {
                 response.send(400, 'No player data');
                 return next();
             }
+            //player.password = sha1(player.password);
+            console.log(player);
             app_database_1.databaseConnection.db.collection('players')
                 .insertOne(player)
                 .then(function (result) { return _this.returnPlayer(result.insertedId, response, next); })
@@ -106,6 +129,7 @@ var Player = (function () {
             server.get(settings.prefix + 'top10', _this.getTop10);
             server.get(settings.prefix + 'players', settings.security.authorize, _this.getPlayers);
             server.get(settings.prefix + 'players/:id', settings.security.authorize, _this.getPlayer);
+            server.get(settings.prefix + 'players/:token', settings.security.authorize, _this.getPlayerByToken);
             server.put(settings.prefix + 'players/:id', settings.security.authorize, _this.updatePlayer);
             server.post(settings.prefix + 'players', _this.createPlayer);
             server.del(settings.prefix + 'players/:id', settings.security.authorize, _this.deletePlayer);

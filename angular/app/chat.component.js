@@ -15,7 +15,7 @@ var ChatComponent = (function () {
         this.websocketService = websocketService;
     }
     ChatComponent.prototype.send = function () {
-        this.websocketService.sendChatMessage(Date.now() + ' ' + this.message);
+        this.websocketService.sendChatMessage(sessionStorage.getItem('name') + ' -> ' + this.message);
         this.message = '';
     };
     return ChatComponent;

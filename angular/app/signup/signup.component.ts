@@ -12,27 +12,24 @@ import { Router } from '@angular/router';
     templateUrl: `signup.component.html`
 })
 export class SignUpComponent { 
-    
+    public serverPath: string;
     
     
     constructor(public router: Router, public http: Http) {
-
+          this.serverPath = 'http://localhost:7777/api/v1/players'
 
     }
-
-
     
     createPlayer(name: any, username: any, passwordHash: any, passwordConfirmation: any, email: any) {
         console.log("Entrou - SIGNUP");
         let avatar = "";
         let totalVictories = 0;
 
-
         let body = JSON.stringify({ name, username, passwordHash, email, avatar, totalVictories });
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         this.http
-            .post('http://localhost:7777/api/v1/players/createPlayer', body, <RequestOptionsArgs>{ headers: headers, withCredentials: false })
+            .post(this.serverPath, body, <RequestOptionsArgs>{ headers: headers, withCredentials: false })
             .subscribe(
             response => {
                 alert("Registation success");
