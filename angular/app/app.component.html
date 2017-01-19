@@ -18,7 +18,8 @@
               <a *ngIf="isLogged()==false" routerLink ="/signup">Sign Up</a>
             </li>
             <li>
-              <a routerLink ="/gamelobby">Lobby</a>
+               <a *ngIf="isLogged()==false" routerLink ="/login">Lobby</a>
+               <a *ngIf="isLogged()==true" routerLink ="/gamelobby">Lobby</a>
             </li>
             <li>
               <a routerLink ="/topten">Top Ten</a>
