@@ -15,7 +15,7 @@ exports.router = [
     { path: 'signup', component: signup_component_1.SignUpComponent },
     { path: 'gamelobby', component: gamelobby_component_1.GameLobbyComponent },
     { path: 'topten', component: topten_component_1.TopTenComponent },
-    { path: 'board', component: board_component_1.BoardComponent }
+    { path: 'board/:id', component: board_component_1.BoardComponent }
 ];
 exports.routes = router_1.RouterModule.forRoot(exports.router);
 //# sourceMappingURL=app.router.js.map

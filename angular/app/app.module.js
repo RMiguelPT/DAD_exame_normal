@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 //import { Authentication } from '../../node/app.authentication';
+var newGame_component_1 = require("./game/newGame.component");
 var validation_service_1 = require("./_services/validation.service");
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
@@ -23,6 +24,7 @@ var logout_component_1 = require("./logout/logout.component");
 var signup_component_1 = require("./signup/signup.component");
 var gamelobby_component_1 = require("./gamelobby/gamelobby.component");
 var topten_component_1 = require("./topten/topten.component");
+var gameHistory_component_1 = require("./game/gameHistory.component");
 //services
 var authentication_service_1 = require("./_services/authentication.service");
 var AppModule = (function () {
@@ -33,7 +35,19 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, notifications_module_1.NotificationModule, forms_1.FormsModule, http_1.HttpModule, app_router_1.routes],
-        declarations: [app_component_1.AppComponent, chat_component_1.ChatComponent, board_component_1.BoardComponent, about_component_1.AboutComponent, login_component_1.LoginComponent, logout_component_1.LogOutComponent, signup_component_1.SignUpComponent, gamelobby_component_1.GameLobbyComponent, topten_component_1.TopTenComponent],
+        declarations: [
+            app_component_1.AppComponent,
+            chat_component_1.ChatComponent,
+            board_component_1.BoardComponent,
+            about_component_1.AboutComponent,
+            login_component_1.LoginComponent,
+            logout_component_1.LogOutComponent,
+            signup_component_1.SignUpComponent,
+            gamelobby_component_1.GameLobbyComponent,
+            topten_component_1.TopTenComponent,
+            newGame_component_1.NewGameComponent,
+            gameHistory_component_1.GameHistoryComponent
+        ],
         providers: [websocket_service_1.WebSocketService, authentication_service_1.AuthenticationService, validation_service_1.ValidationService],
         bootstrap: [app_component_1.AppComponent]
     })

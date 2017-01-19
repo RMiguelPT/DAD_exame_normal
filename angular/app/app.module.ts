@@ -1,4 +1,5 @@
 //import { Authentication } from '../../node/app.authentication';
+import { NewGameComponent } from "./game/newGame.component";
 import { ValidationService } from "./_services/validation.service";
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +19,7 @@ import { LogOutComponent } from './logout/logout.component';
 import { SignUpComponent } from './signup/signup.component';
 import { GameLobbyComponent } from './gamelobby/gamelobby.component';
 import { TopTenComponent } from './topten/topten.component';
+import { GameHistoryComponent } from './game/gameHistory.component';
 
 
 //services
@@ -25,7 +27,18 @@ import { AuthenticationService } from './_services/authentication.service';
 
 @NgModule({
   imports:      [ BrowserModule, NotificationModule, FormsModule, HttpModule,routes ],
-  declarations: [ AppComponent, ChatComponent, BoardComponent, AboutComponent, LoginComponent,LogOutComponent, SignUpComponent, GameLobbyComponent, TopTenComponent ],
+  declarations: [
+                   AppComponent,
+                   ChatComponent,
+                   BoardComponent,
+                   AboutComponent,
+                   LoginComponent,
+                   LogOutComponent,
+                   SignUpComponent,
+                   GameLobbyComponent,
+                   TopTenComponent,
+                   NewGameComponent,
+                   GameHistoryComponent ],
   providers:    [ WebSocketService, AuthenticationService, ValidationService ],
   bootstrap:    [ AppComponent ]
 })
