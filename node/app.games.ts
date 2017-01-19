@@ -128,6 +128,8 @@ export class Game {
         server.get(settings.prefix + 'finishedGames', this.getGamesFinished);
         server.put(settings.prefix + 'games/:id', settings.security.authorize, this.updateGame);
         server.post(settings.prefix + 'games', settings.security.authorize, this.createGame);
+        server.get(settings.prefix + 'pendingGames', settings.security.authorize, this.getGamesPending);
+        //server.get(settings.prefix + 'pendingGames', this.getGamesPending);
         server.del(settings.prefix + 'games/:id', settings.security.authorize, this.deleteGame);
         console.log("Games routes registered");
     };    

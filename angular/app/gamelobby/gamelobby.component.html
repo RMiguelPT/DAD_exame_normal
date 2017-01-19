@@ -5,48 +5,34 @@
                 <div class="panel-title">Game Lobby - {{player}} </div>
             </div>
            
-            <div style="padding-top:30px" class="panel-body">
-                <div style="float:left; position: relative; top: -10px" id="avatar">
-                    <img style= "height: 80px; width: 80px;"  src="./../img/{{avatar}}" class="img-circle">
-                    <br>
-                    <button class="btn btn-warning">Change</button>
-                    
-                </div>
-                
-                <div style="float:right; font-size: 80%; position: relative; top:-10px">
-                    <a style="width:150px" id="btn-top10" class="btn btn-success" routerLink ="/topten">Top Ten</a>
-                    <newGame></newGame>
-                    
-                </div>
-                <div style ="padding-top: 80px" id="pendingGames">
-                    <br>
-                    <h3 style="color:white!important">Pending Games </h3>
-                    <br>
+             <div style="padding-top:30px" class="panel-body" >
+             <h3 style="color:white!important">Pending   Games </h3>
+                <div class=bs-example data-example-id=bordered-table>
+                     <table class="table table-bordered">
+                          <thead>
+                               <tr>
+                                    <th style="width:180px">ID Game</th>
+                                    <th style="width:150px">Creator</th>
+                                    <th style="width:80px">State</th>
+                                    <th>Players</th>
+                                </tr>
+                           </thead>
+                            <tbody>
+                                <tr *ngFor="let item of allGames">
+                                    <td>{{item._id}}</td>
+                                    <td>{{item.creator}}</td>
+                                    <td>{{item.state}}</td>
+                                <td>
+                                    <div  *ngFor="let player of item.players" >
+                                        {{player.player.name}}
+                                    </div>
 
-                    <div id="listpending">
-                        <table class="table table-bordered table-striped table-hover table-condensed table-hover table-responsive">
-                            <tr style="height:30px!important;">
-                                <th style="width:100px">Id</th>
-                                <th style="width:500px">Creator</th> 
-                                <th style="width:350px">Players Waiting</th>
-                                <th></th>
-                            </tr>
-                            <tr style="height:30px!important;">
-                                <td>1</td>
-                                <td>Ruben Bernardo</td> 
-                                <td>1</td>
-                                <td><a style="height:100%!important; width:100%!important; position:relative!important;"class="btn btn-success">Join</a></td>
-
-                            </tr>
-                            <tr style="height:30px!important;">
-                                <td style="height:10px;">2</td>
-                                <td>Bruno Paixão</td> 
-                                <td>2</td>
-                                <td ><a style="height:100%!important; width:100%!important; position:relative!important;" class="btn btn-success">Join</a></td>
-                            </tr>    
-                        </table>
-                    </div>
-                </div>
+                                </td>
+                                </tr>
+                                 
+                            </tbody> 
+                    </table> 
+                </div>  
 
                 <div id="runningGames">
                     <br>

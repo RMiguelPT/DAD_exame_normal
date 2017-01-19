@@ -1,7 +1,7 @@
 "use strict";
 var mongodb = require('mongodb');
 var util = require('util');
-var app_database_1 = require('./app.database');
+var app_database_1 = require("./app.database");
 var Game = (function () {
     function Game() {
         var _this = this;
@@ -119,6 +119,8 @@ var Game = (function () {
             server.get(settings.prefix + 'finishedGames', _this.getGamesFinished);
             server.put(settings.prefix + 'games/:id', settings.security.authorize, _this.updateGame);
             server.post(settings.prefix + 'games', settings.security.authorize, _this.createGame);
+            //server.get(settings.prefix + 'pendingGames', settings.security.authorize, this.getGamesPending);
+            server.get(settings.prefix + 'pendingGames', _this.getGamesPending);
             server.del(settings.prefix + 'games/:id', settings.security.authorize, _this.deleteGame);
             console.log("Games routes registered");
         };
