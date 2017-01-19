@@ -84,10 +84,7 @@ var Player = (function () {
                 response.send(400, 'No player data');
                 return next();
             }
-            console.log('PLAYER PASS');
-            console.log(player.passwordHash);
             player.passwordHash = sha1(player.passwordHash);
-            console.log(player);
             app_database_1.databaseConnection.db.collection('players')
                 .insertOne(player)
                 .then(function (result) { return _this.returnPlayer(result.insertedId, response, next); })

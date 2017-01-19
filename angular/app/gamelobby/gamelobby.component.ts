@@ -15,6 +15,7 @@ import { AuthenticationService } from './../_services/authentication.service';
 })
 export class GameLobbyComponent { 
         public player = sessionStorage.getItem('name').toString();
+        public avatar = sessionStorage.getItem('avatar');
         public islogged = false;
         public pathLogout = 'http://localhost:7777/api/v1/';
         public isLogged = true;

@@ -18,6 +18,7 @@ var GameLobbyComponent = (function () {
         this.http = http;
         this.authenticationService = authenticationService;
         this.player = sessionStorage.getItem('name').toString();
+        this.avatar = sessionStorage.getItem('avatar');
         this.islogged = false;
         this.pathLogout = 'http://localhost:7777/api/v1/';
         this.isLogged = true;

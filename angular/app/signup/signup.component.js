@@ -25,7 +25,7 @@ var SignUpComponent = (function () {
     SignUpComponent.prototype.createPlayer = function (name, username, passwordHash, confirmpassword, email) {
         var _this = this;
         console.log("Entrou - SIGNUP");
-        var avatar = "";
+        var avatar = "avatar_def.png";
         var totalVictories = 0;
         var body = JSON.stringify({ name: name, username: username, passwordHash: passwordHash, email: email, avatar: avatar, totalVictories: totalVictories });
         var headers = new http_1.Headers();

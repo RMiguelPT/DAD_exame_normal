@@ -27,7 +27,7 @@ export class SignUpComponent {
     
     createPlayer(name: any, username: any, passwordHash: any, confirmpassword: any, email: any) {
         console.log("Entrou - SIGNUP");
-        let avatar = "";
+        let avatar = "avatar_def.png";
         let totalVictories = 0;
 
         let body = JSON.stringify({ name, username, passwordHash, email, avatar, totalVictories });
