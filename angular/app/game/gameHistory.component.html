@@ -10,21 +10,31 @@
                      <table class="table table-bordered">
                           <thead>
                                <tr>
-                                    <th>ID Game</th>
-                                    <th>Game State</th>
+                                    <th style="width:180px">ID Game</th>
+                                    <th style="width:150px">Creator</th>
+                                    <th style="width:120px">Begin Date</th>
+                                    <th style="width:120px">End Date</th>
+                                    <th style="width:120px">Winner 1</th>
+                                    <th style="width:120px">Winner 2</th>
+                                    <th style="width:80px">State</th>
                                     <th>Players</th>
                                 </tr>
                            </thead>
                             <tbody>
                                 <tr *ngFor="let item of allGames">
-
-                                    <td>Id Game:<br /> {{item._id}}</td>
-                                    <td>State: {{item.state}}</td><br>
-                                
-                                    <div *ngFor="let f of item.players" style="border:1px">
-                                        <td>Name:{{f.player.name}}<br></td><br>
-                                        <td>Status Date:{{f.player.statusDate}}<br></td><br>
+                                    <td>{{item._id}}</td>
+                                    <td>{{item.creator}}</td>
+                                    <td>{{item.beginDate | date:shorTime}}</td>
+                                    <td>{{item.endDate}}</td>
+                                    <td>{{item.winner1}}</td>
+                                    <td>{{item.winner2}}</td>
+                                    <td>{{item.state}}</td>
+                                <td>
+                                    <div  *ngFor="let player of item.players" >
+                                        {{player.player.name}}
                                     </div>
+
+                                </td>
                                 </tr>
                                  
                             </tbody> 

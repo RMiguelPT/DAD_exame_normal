@@ -1,3 +1,4 @@
+import { createOfflineCompileUrlResolver } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import { Router } from '@angular/router';
@@ -19,13 +20,22 @@ export class NewGameComponent {
 	private path: string;
 	private userId: any;
 	private userName: any;
-
+    private beginDate: any;
+    private endDate: any;
+    private winner1: any;
+    private winner2: any;
+    private creator: any;
 
 	constructor(public router: Router, public http: Http, private websocketService: WebSocketService) {
 		this.userId = sessionStorage.getItem('_id');
 		this.userName = sessionStorage.getItem('username');
 		this.authToken = sessionStorage.getItem('id_token');
 		this.path = 'http://localhost:7777/api/v1/';
+        this.beginDate = Date.now();
+        this.endDate='';
+        this.winner1='';
+        this.winner2='';
+        this.creator = sessionStorage.getItem('name');
 	}
 
 
@@ -41,7 +51,7 @@ export class NewGameComponent {
 		}];
 
 
-		let body = JSON.stringify({ players: this.Players, state: 'pending' });
+		let body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, creator: this.creator, players: this.Players, state: 'pending' });
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 		headers.append('Authorization', 'bearer ' + this.authToken);
