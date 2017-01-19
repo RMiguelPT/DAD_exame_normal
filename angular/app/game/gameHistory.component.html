@@ -1,0 +1,43 @@
+<div class="container">    
+    <div id="gamesHistory" style="margin-top:50px;" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">                    
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+                <div class="panel-title">SUECA - GAMES HISTORY</div>
+            </div>     
+
+            <div style="padding-top:30px" class="panel-body" >
+                <div class=bs-example data-example-id=bordered-table>
+                     <table class="table table-bordered">
+                          <thead>
+                               <tr>
+                                    <th>ID Game</th>
+                                    <th>Game State</th>
+                                    <th>Players</th>
+                                </tr>
+                           </thead>
+                            <tbody>
+                                <tr *ngFor="let item of allGames">
+
+                                    <td>Id Game:<br /> {{item._id}}</td>
+                                    <td>State: {{item.state}}</td><br>
+                                
+                                    <div *ngFor="let f of item.players" style="border:1px">
+                                        <td>Name:{{f.player.name}}<br></td><br>
+                                        <td>Status Date:{{f.player.statusDate}}<br></td><br>
+                                    </div>
+                                </tr>
+                                 
+                            </tbody> 
+                    </table> 
+                </div>  
+                
+            </div> 
+            <div style="padding-top:30px; padding-bottom: 30px" class="panel-footer" >
+                <div style="float:right; font-size: 80%; position: relative; top:-10px; margin-bottom: 10px" >
+                    <a style="width:150px" id="btn-home" class="btn btn-danger" routerLink ="/gamelobby">Close</a>
+                </div>
+                
+            </div>                    
+        </div>  
+    </div>
+</div>

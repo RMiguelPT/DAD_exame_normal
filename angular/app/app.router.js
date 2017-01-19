@@ -1,4 +1,5 @@
 "use strict";
+var gameHistory_component_1 = require("./game/gameHistory.component");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
 var about_component_1 = require("./about/about.component");
@@ -15,6 +16,7 @@ exports.router = [
     { path: 'signup', component: signup_component_1.SignUpComponent },
     { path: 'gamelobby', component: gamelobby_component_1.GameLobbyComponent },
     { path: 'topten', component: topten_component_1.TopTenComponent },
+    { path: 'history', component: gameHistory_component_1.GameHistoryComponent },
     { path: 'board/:id', component: board_component_1.BoardComponent }
 ];
 exports.routes = router_1.RouterModule.forRoot(exports.router);

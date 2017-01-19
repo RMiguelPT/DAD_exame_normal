@@ -1,3 +1,4 @@
+import { GameHistoryComponent } from './game/gameHistory.component';
 import { ModuleWithProviders } from '@angular/core';
 import {Routes, RouterModule } from '@angular/router';
 
@@ -17,6 +18,7 @@ export const router: Routes = [
     {path: 'signup', component: SignUpComponent},
     {path: 'gamelobby', component: GameLobbyComponent},
     {path: 'topten', component: TopTenComponent},
+    {path: 'history', component: GameHistoryComponent},
     {path: 'board/:id' , component: BoardComponent }
     
 ];

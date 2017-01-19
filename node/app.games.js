@@ -49,6 +49,18 @@ var Game = (function () {
             })
                 .catch(function (err) { return _this.handleError(err, response, next); });
         };
+        this.getGamesFinished = function (request, response, next) {
+            app_database_1.databaseConnection.db.collection('games')
+                .find({
+                state: 'finished'
+            })
+                .toArray()
+                .then(function (games) {
+                response.json(games || []);
+                next();
+            })
+                .catch(function (err) { return _this.handleError(err, response, next); });
+        };
         this.getGame = function (request, response, next) {
             var id = new mongodb.ObjectID(request.params.id);
             _this.returnGame(id, response, next);
@@ -104,6 +116,7 @@ var Game = (function () {
         this.init = function (server, settings) {
             server.get(settings.prefix + 'games', settings.security.authorize, _this.getGames);
             server.get(settings.prefix + 'games/:id', settings.security.authorize, _this.getGame);
+            server.get(settings.prefix + 'finishedGames', _this.getGamesFinished);
             server.put(settings.prefix + 'games/:id', settings.security.authorize, _this.updateGame);
             server.post(settings.prefix + 'games', settings.security.authorize, _this.createGame);
             server.del(settings.prefix + 'games/:id', settings.security.authorize, _this.deleteGame);

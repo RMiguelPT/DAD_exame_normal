@@ -52,6 +52,20 @@ export class Game {
             .catch(err => this.handleError(err, response, next));
     }
 
+
+    public getGamesFinished = (request: any, response: any, next: any) => {
+        database.db.collection('games')
+            .find({
+                state: 'finished'
+            })
+            .toArray()
+            .then(games => {
+                response.json(games || []);
+                next();
+            })
+            .catch(err => this.handleError(err, response, next));
+    }
+
     public getGame =  (request: any, response: any, next: any) => {
         const id = new mongodb.ObjectID(request.params.id);
         this.returnGame(id, response, next);
@@ -111,6 +125,7 @@ export class Game {
     public init = (server: any, settings: HandlerSettings) => {
         server.get(settings.prefix + 'games', settings.security.authorize, this.getGames);
         server.get(settings.prefix + 'games/:id', settings.security.authorize, this.getGame);
+        server.get(settings.prefix + 'finishedGames', this.getGamesFinished);
         server.put(settings.prefix + 'games/:id', settings.security.authorize, this.updateGame);
         server.post(settings.prefix + 'games', settings.security.authorize, this.createGame);
         server.del(settings.prefix + 'games/:id', settings.security.authorize, this.deleteGame);

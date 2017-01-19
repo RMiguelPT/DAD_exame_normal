@@ -15,7 +15,7 @@ export class TopTenComponent {
     public highScores: any []= [];
 
     constructor (public http: Http){
-    this.getHighScores();
+        this.getHighScores();
     }
 
     getHighScores () {

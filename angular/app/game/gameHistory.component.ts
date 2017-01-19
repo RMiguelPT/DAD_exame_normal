@@ -12,22 +12,39 @@ import {Routes, RouterModule } from '@angular/router';
 })
 
 export class GameHistoryComponent {
-    private history: any[] = [];
-    private userHistory: any[] = [];
+    private allGames: any[] = [];
+    private userGames: any[] = [];
     private Path: string;
     private userId = sessionStorage.getItem('_id');
-    private isLogged: boolean;
+    
 
     constructor(private authentication: AuthenticationService, public router: Router, public http: Http) {
         this.Path = 'http://localhost:7777/api/v1/';
-        this. isLogged = this.authentication.isLoggedIn();
-        //this.getGameHistory();
+        this.getAllGames();
     }
 
+    
 
 
+    getAllGames() {
 
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
 
+        this.http
+            .get(this.Path + 'finishedGames', <RequestOptionsArgs>{ headers: headers, withCredentials: false })
+            .subscribe(
+            response => {
+                this.allGames = response.json();
+                console.log(response.json());
+            },
+            error => {
+                //alert(error.text());
+                console.log(error.text());
+            }
+            );
+
+    }
 
 
 

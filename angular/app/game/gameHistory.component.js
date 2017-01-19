@@ -17,13 +17,26 @@ var GameHistoryComponent = (function () {
         this.authentication = authentication;
         this.router = router;
         this.http = http;
-        this.history = [];
-        this.userHistory = [];
+        this.allGames = [];
+        this.userGames = [];
         this.userId = sessionStorage.getItem('_id');
         this.Path = 'http://localhost:7777/api/v1/';
-        this.isLogged = this.authentication.isLoggedIn();
-        //this.getGameHistory();
+        this.getAllGames();
     }
+    GameHistoryComponent.prototype.getAllGames = function () {
+        var _this = this;
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        this.http
+            .get(this.Path + 'finishedGames', { headers: headers, withCredentials: false })
+            .subscribe(function (response) {
+            _this.allGames = response.json();
+            console.log(response.json());
+        }, function (error) {
+            //alert(error.text());
+            console.log(error.text());
+        });
+    };
     return GameHistoryComponent;
 }());
 GameHistoryComponent = __decorate([
