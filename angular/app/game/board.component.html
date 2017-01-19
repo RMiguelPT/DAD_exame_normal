@@ -1,18 +1,66 @@
 <div class="container">    
-    <div id="toptenbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+    <div id="board" style="margin-top:50px;;" class="mainbox col-md-12 col-sm-8" >                    
         <div class="panel panel-info" >
             <div class="panel-heading">
-                <div class="panel-title">BATTLESHIP - GAME BOARD</div>
+                <div class="panel-title">SUECA - GAME BOARD</div>
                 
             </div>     
 
-            <div style="padding-top:30px" class="panel-body" >
+            <div style="padding-top:30px;  background-color: green" class="panel-body" >
+                <!--<div class="container">-->
+                <div class="col-md-12" style="text-align: center; border:2px solid">
+                    Player 1 hand
+                    
+                </div>  
+                <div class="col-md-2" style="text-align: center; border:2px solid">
+                    Player 3 hand
+                    
+                </div>   
+                <div class="col-md-8"style="text-align: center; border:2px solid">
+                    <!--<div class="container">-->
+
+                        <div class="col-md-12">
+                        <div class="col-md-4" >NOT USED</div>
+                        <div class="col-md-4" ><img src="./img/c1.png" style="width: 30%; height: 30%; text-align:center" class="img-responsive"></div>
+                        <div class="col-md-4" >NOT USED</div>
+                        </div>  
+                        <div class="col-md-12">
+                        <div class="col-md-4" ><img src="./img/c1.png" style="width: 30%; height: 30%; text-align:center" class="img-responsive"></div>
+                        <div class="col-md-4" >NOT USED</div>
+                        <div class="col-md-4" ><img src="./img/c1.png" style="width: 30%; height: 30%; text-align:center" class="img-responsive"></div>
+                        </div>
+                        <div class="col-md-12">
+                        <div class="col-md-4" >NOT USED</div>
+                        <div class="col-md-4"><img src="./img/c1.png" style="width: 30%; height: 30%; text-align:center" class="img-responsive"></div>
+                        <div class="col-md-4" >NOT USED</div>
+                        </div>
+                    <!--</div>-->
+                    
+                </div>  
+                <div class="col-md-2" style="text-align: center; border:2px solid">
+                    Player 4 hand
+                    
+                </div> 
+                <div class="col-md-12" style="text-align: center; border:2px solid">
+                    Player 2 hand
+                    
+                </div>
                 
-                
+            <!--</div>-->
             </div> 
             <div style="padding-top:30px; padding-bottom: 30px" class="panel-footer" >
+                <div style="float:left; font-size: 80%; position: relative; top:-10px; margin-bottom: 10px" >
+                    <div class="col-md-6">Points Team 1:</div>
+                    <div class="col-md-6" id="pointsTeam1">XXX Points</div>
+                    <div class="col-md-6">Points Team 2:</div>
+                    <div class="col-md-6" id="pointsTeam1">XXX Points</div>
+                    
+                </div>
                 <div style="float:right; font-size: 80%; position: relative; top:-10px; margin-bottom: 10px" >
-                    <a style="width:150px" id="btn-home" class="btn btn-danger" routerLink ="/gamelobby">Quit</a>
+                    <a style="width:150px" id="btn-home" class="btn btn-success" routerLink ="/gamelobby">Start</a>
+                    <a style="width:150px" id="btn-home" class="btn btn-danger" routerLink ="/gamelobby">Denounce</a>
+                    <a style="width:150px" id="btn-home" class="btn btn-warning" routerLink ="/gamelobby">Quit</a>
+                    
                 </div>
                 
             </div>                    
