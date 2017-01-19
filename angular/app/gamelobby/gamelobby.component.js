@@ -9,9 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var authentication_service_1 = require("./../_services/authentication.service");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
-var authentication_service_1 = require("./../_services/authentication.service");
 var GameLobbyComponent = (function () {
     function GameLobbyComponent(authentication, router, http, authenticationService) {
         this.authentication = authentication;
@@ -23,10 +23,12 @@ var GameLobbyComponent = (function () {
         this.userId = sessionStorage.getItem('_id');
         this.pathLogout = 'http://localhost:7777/api/v1/';
         this.isLogged = true;
-        this.allGames = [];
+        this.allGamesPending = [];
+        this.allGamesRunning = [];
         this.userGames = [];
         this.Path = 'http://localhost:7777/api/v1/';
         this.getGamesPending();
+        this.getGamesRunnig();
     }
     GameLobbyComponent.prototype.getGamesPending = function () {
         var _this = this;
@@ -35,7 +37,21 @@ var GameLobbyComponent = (function () {
         this.http
             .get(this.Path + 'pendingGames', { headers: headers, withCredentials: false })
             .subscribe(function (response) {
-            _this.allGames = response.json();
+            _this.allGamesPending = response.json();
+            console.log(response.json());
+        }, function (error) {
+            //alert(error.text());
+            console.log(error.text());
+        });
+    };
+    GameLobbyComponent.prototype.getGamesRunnig = function () {
+        var _this = this;
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        this.http
+            .get(this.Path + 'runningGames', { headers: headers, withCredentials: false })
+            .subscribe(function (response) {
+            _this.allGamesRunning = response.json();
             console.log(response.json());
         }, function (error) {
             //alert(error.text());
