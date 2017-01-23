@@ -7,11 +7,11 @@ import { FormsModule }   from '@angular/forms';
 import { AppComponent }  from './app.component';
 import { HttpModule } from '@angular/http';
 import { routes } from './app.router';
-import {Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { NotificationModule } from './notifications/notifications.module';
-import {ChatComponent} from './chat.component';
-import {BoardComponent} from './game/board.component';
+import { ChatComponent} from './chat.component';
+import { BoardComponent} from './game/board.component';
 import { WebSocketService } from './notifications/websocket.service';
 import { AboutComponent }  from './about/about.component';
 import { LoginComponent } from './login/login.component';
