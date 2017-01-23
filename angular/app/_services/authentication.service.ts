@@ -18,8 +18,6 @@ export class AuthenticationService {
 
     login(event: any, username: any, password: any) {
         console.log("Entrou - LOGIN");
-       
-
         let body = JSON.stringify({username, password});
         let name = JSON.stringify({password});
         let headers = new Headers();
@@ -29,7 +27,7 @@ export class AuthenticationService {
         .subscribe(
             response => {
                 if (response.ok) {
-                    sessionStorage.setItem('_id', response.json().id);
+                    sessionStorage.setItem('_id', response.json()._id);
                     sessionStorage.setItem('id_token', response.json().token);
                     sessionStorage.setItem('name', response.json().name);
                     sessionStorage.setItem('totalvictories', response.json().totalvictories);
@@ -37,7 +35,7 @@ export class AuthenticationService {
                     sessionStorage.setItem('avatar', response.json().avatar);
                 }
 
-                console.log(response);
+                console.log('response-->' + response);
                 this.isLogged = true;
                 this.router.navigate(['gamelobby']);
             }, 

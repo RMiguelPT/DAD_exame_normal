@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {WebSocketService } from '../notifications/websocket.service';
+import { NewGameComponent } from './../game/newGame.component';
+import { GameService } from "./../_services/game.service";
 
 @Component({
     moduleId: module.id,
@@ -9,8 +11,11 @@ import {WebSocketService } from '../notifications/websocket.service';
 })
 export class BoardComponent implements OnInit{
     public elementos: number[] = [];
+    public creatorName ='';
 
-    constructor(private websocketService: WebSocketService) {}
+    constructor(private websocketService: WebSocketService, private gameService: GameService ) {
+       
+    }
 
     ngOnInit() {
         this.elementos = [];
@@ -18,6 +23,7 @@ export class BoardComponent implements OnInit{
             console.log(m);
             this.elementos = m;
         });
+         this.getCreatorName();
     }
     
     clickElemento(index: number){
@@ -31,6 +37,10 @@ export class BoardComponent implements OnInit{
             case 2: return 'red';
         }
         return 'white';
+    }
+
+    getCreatorName(){
+        this.creatorName = this.gameService.getCreatorName();
     }
 }
 

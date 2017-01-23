@@ -1,3 +1,5 @@
+import { CardComponent } from './game/card.component';
+import { DeckComponent } from './game/deck.component';
 //import { Authentication } from '../../node/app.authentication';
 import { NewGameComponent } from "./game/newGame.component";
 import { ValidationService } from "./_services/validation.service";
@@ -20,6 +22,7 @@ import { SignUpComponent } from './signup/signup.component';
 import { GameLobbyComponent } from './gamelobby/gamelobby.component';
 import { TopTenComponent } from './topten/topten.component';
 import { GameHistoryComponent } from './game/gameHistory.component';
+import { GameService } from './_services/game.service';
 
 
 //services
@@ -38,8 +41,11 @@ import { AuthenticationService } from './_services/authentication.service';
                    GameLobbyComponent,
                    TopTenComponent,
                    NewGameComponent,
-                   GameHistoryComponent ],
-  providers:    [ WebSocketService, AuthenticationService, ValidationService ],
+                   GameHistoryComponent,
+                   DeckComponent,
+                   CardComponent
+                    ],
+  providers:    [ WebSocketService, AuthenticationService, ValidationService, GameService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

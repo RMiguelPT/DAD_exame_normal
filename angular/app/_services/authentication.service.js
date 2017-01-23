@@ -30,14 +30,14 @@ var AuthenticationService = (function () {
         this.http.post('http://localhost:7777/api/v1/login', body, { headers: headers })
             .subscribe(function (response) {
             if (response.ok) {
-                sessionStorage.setItem('_id', response.json().id);
+                sessionStorage.setItem('_id', response.json()._id);
                 sessionStorage.setItem('id_token', response.json().token);
                 sessionStorage.setItem('name', response.json().name);
                 sessionStorage.setItem('totalvictories', response.json().totalvictories);
                 sessionStorage.setItem('username', response.json().username);
                 sessionStorage.setItem('avatar', response.json().avatar);
             }
-            console.log(response);
+            console.log('response-->' + response);
             _this.isLogged = true;
             _this.router.navigate(['gamelobby']);
         }, function (error) {
