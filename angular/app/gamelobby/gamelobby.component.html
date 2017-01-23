@@ -29,7 +29,7 @@
                           <thead>
                                <tr>
                                     <th style="width:180px">ID Game</th>
-                                    <th style="width:150px">Creator</th>
+                                    <th style="width:320px">Creator</th>
                                     <th style="width:80px">State</th>
                                     <th>Players</th>
                                     <th style="width:110px; text-align: center">Join</th>
@@ -46,7 +46,7 @@
                                         </div>
 
                                     </td>
-                                    <td><button id="joinGame" class="btn btn-success" style="width:100%">Join</button></td>
+                                    <td><button id="joinGame" class="btn btn-success" style="width:100%; height: 100%">Join</button></td>
                                 </tr>
                                  
                             </tbody> 
@@ -62,9 +62,10 @@
                           <thead>
                                <tr>
                                     <th style="width:180px">ID Game</th>
-                                    <th style="width:150px">Creator</th>
+                                    <th style="width:320px">Creator</th>
                                     <th style="width:80px">State</th>
                                     <th>Players</th>
+                                    <th style="width:110px; text-align: center">Watch</th>
                                 </tr>
                            </thead>
                             <tbody>
@@ -72,12 +73,13 @@
                                     <td>{{item._id}}</td>
                                     <td>{{item.creator}}</td>
                                     <td>{{item.state}}</td>
-                                <td>
-                                    <div  *ngFor="let player of item.players" >
-                                        {{player.player.name}}
-                                    </div>
+                                    <td>
+                                        <div  *ngFor="let player of item.players" >
+                                            {{player.player.name}}
+                                        </div>
 
-                                </td>
+                                    </td>
+                                    <td><button id="watchGame" class="btn btn-primary" style="width:100%; height: 100%">Watch</button></td>
                                 </tr>
                                  
                             </tbody> 

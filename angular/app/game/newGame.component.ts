@@ -37,10 +37,14 @@ export class NewGameComponent {
         this.winner1='';
         this.winner2='';
         this.creator = sessionStorage.getItem('name');
-
 		this.setCreatorName(this.userName);
+		
 	}
 
+	
+	 ngOnInit() {
+        
+    }
 
     createGame() {
 
