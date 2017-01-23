@@ -18,7 +18,7 @@ var NewGameComponent = (function () {
         this.http = http;
         this.websocketService = websocketService;
         this.Players = [];
-        this.userId = sessionStorage.getItem('_id');
+        this.uid = sessionStorage.getItem('_id');
         this.userName = sessionStorage.getItem('username');
         this.authToken = sessionStorage.getItem('id_token');
         this.path = 'http://localhost:7777/api/v1/';
@@ -31,13 +31,15 @@ var NewGameComponent = (function () {
     NewGameComponent.prototype.createGame = function () {
         var _this = this;
         var player = {
-            uid: this.userId, name: this.userName,
+            uid: this.uid, name: this.userName,
             statusDate: Date.now(), score: 0
         };
         this.Players = [{
                 player: player
             }];
-        var body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, creator: this.creator, players: this.Players, state: 'pending' });
+        var playerID = sessionStorage.getItem('_id');
+        alert(playerID);
+        var body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, creator: playerID, players: this.Players, state: 'pending' });
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'bearer ' + this.authToken);

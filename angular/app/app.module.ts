@@ -20,6 +20,7 @@ import { SignUpComponent } from './signup/signup.component';
 import { GameLobbyComponent } from './gamelobby/gamelobby.component';
 import { TopTenComponent } from './topten/topten.component';
 import { GameHistoryComponent } from './game/gameHistory.component';
+import { GameService } from './_services/game.service';
 
 
 //services
@@ -39,7 +40,7 @@ import { AuthenticationService } from './_services/authentication.service';
                    TopTenComponent,
                    NewGameComponent,
                    GameHistoryComponent ],
-  providers:    [ WebSocketService, AuthenticationService, ValidationService ],
+  providers:    [ WebSocketService, AuthenticationService, ValidationService, GameService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

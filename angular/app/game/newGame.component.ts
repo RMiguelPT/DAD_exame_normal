@@ -18,7 +18,7 @@ export class NewGameComponent {
     public Players: any[] = [];
 	public authToken: any;
 	private path: string;
-	private userId: any;
+	private uid: any;
 	private userName: any;
     private beginDate: any;
     private endDate: any;
@@ -27,7 +27,7 @@ export class NewGameComponent {
     private creator: any;
 
 	constructor(public router: Router, public http: Http, private websocketService: WebSocketService) {
-		this.userId = sessionStorage.getItem('_id');
+		this.uid = sessionStorage.getItem('_id');
 		this.userName = sessionStorage.getItem('username');
 		this.authToken = sessionStorage.getItem('id_token');
 		this.path = 'http://localhost:7777/api/v1/';
@@ -42,7 +42,7 @@ export class NewGameComponent {
     createGame() {
 
 		let player: any = {
-			uid: this.userId, name: this.userName,
+			uid: this.uid, name: this.userName,
 			statusDate: Date.now(), score: 0
 		};
 
@@ -50,8 +50,10 @@ export class NewGameComponent {
 			player: player
 		}];
 
+		let playerID = sessionStorage.getItem('_id');
+		alert(playerID);
 
-		let body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, creator: this.creator, players: this.Players, state: 'pending' });
+		let body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, creator: playerID, players: this.Players, state: 'pending' });
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 		headers.append('Authorization', 'bearer ' + this.authToken);

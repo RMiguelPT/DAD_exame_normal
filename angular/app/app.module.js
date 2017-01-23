@@ -25,6 +25,7 @@ var signup_component_1 = require("./signup/signup.component");
 var gamelobby_component_1 = require("./gamelobby/gamelobby.component");
 var topten_component_1 = require("./topten/topten.component");
 var gameHistory_component_1 = require("./game/gameHistory.component");
+var game_service_1 = require("./_services/game.service");
 //services
 var authentication_service_1 = require("./_services/authentication.service");
 var AppModule = (function () {
@@ -48,7 +49,7 @@ AppModule = __decorate([
             newGame_component_1.NewGameComponent,
             gameHistory_component_1.GameHistoryComponent
         ],
-        providers: [websocket_service_1.WebSocketService, authentication_service_1.AuthenticationService, validation_service_1.ValidationService],
+        providers: [websocket_service_1.WebSocketService, authentication_service_1.AuthenticationService, validation_service_1.ValidationService, game_service_1.GameService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
