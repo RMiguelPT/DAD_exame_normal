@@ -10,10 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var websocket_service_1 = require("../notifications/websocket.service");
+var game_service_1 = require("./../_services/game.service");
 var BoardComponent = (function () {
-    function BoardComponent(websocketService) {
+    function BoardComponent(websocketService, gameService) {
         this.websocketService = websocketService;
+        this.gameService = gameService;
         this.elementos = [];
+        this.creatorName = '';
     }
     BoardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -22,6 +25,7 @@ var BoardComponent = (function () {
             console.log(m);
             _this.elementos = m;
         });
+        this.getCreatorName();
     };
     BoardComponent.prototype.clickElemento = function (index) {
         this.websocketService.sendClickElementMessage(index);
@@ -34,6 +38,9 @@ var BoardComponent = (function () {
         }
         return 'white';
     };
+    BoardComponent.prototype.getCreatorName = function () {
+        this.creatorName = this.gameService.getCreatorName();
+    };
     return BoardComponent;
 }());
 BoardComponent = __decorate([
@@ -43,7 +50,7 @@ BoardComponent = __decorate([
         templateUrl: 'board.component.html',
         styleUrls: ['board.component.css']
     }),
-    __metadata("design:paramtypes", [websocket_service_1.WebSocketService])
+    __metadata("design:paramtypes", [websocket_service_1.WebSocketService, game_service_1.GameService])
 ], BoardComponent);
 exports.BoardComponent = BoardComponent;
 //# sourceMappingURL=board.component.js.map

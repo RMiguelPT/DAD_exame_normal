@@ -8,15 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var game_service_1 = require("./../_services/game.service");
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var websocket_service_1 = require("../notifications/websocket.service");
 var NewGameComponent = (function () {
-    function NewGameComponent(router, http, websocketService) {
+    function NewGameComponent(router, http, websocketService, gameService) {
         this.router = router;
         this.http = http;
         this.websocketService = websocketService;
+        this.gameService = gameService;
         this.Players = [];
         this.uid = sessionStorage.getItem('_id');
         this.userName = sessionStorage.getItem('username');
@@ -27,6 +29,7 @@ var NewGameComponent = (function () {
         this.winner1 = '';
         this.winner2 = '';
         this.creator = sessionStorage.getItem('name');
+        this.setCreatorName(this.userName);
     }
     NewGameComponent.prototype.createGame = function () {
         var _this = this;
@@ -37,7 +40,7 @@ var NewGameComponent = (function () {
         this.Players = [{
                 player: player
             }];
-        var playerID = sessionStorage.getItem('_id');
+        var playerID = sessionStorage.getItem('_id') + ' - ' + this.userName;
         alert(playerID);
         var body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, creator: playerID, players: this.Players, state: 'pending' });
         var headers = new http_1.Headers();
@@ -55,6 +58,9 @@ var NewGameComponent = (function () {
             console.log(error.text());
         });
     };
+    NewGameComponent.prototype.setCreatorName = function (username) {
+        this.gameService.setCreatorName(this.userName);
+    };
     return NewGameComponent;
 }());
 NewGameComponent = __decorate([
@@ -63,7 +69,7 @@ NewGameComponent = __decorate([
         selector: 'newGame',
         templateUrl: 'newGame.component.html'
     }),
-    __metadata("design:paramtypes", [router_1.Router, http_1.Http, websocket_service_1.WebSocketService])
+    __metadata("design:paramtypes", [router_1.Router, http_1.Http, websocket_service_1.WebSocketService, game_service_1.GameService])
 ], NewGameComponent);
 exports.NewGameComponent = NewGameComponent;
 //# sourceMappingURL=newGame.component.js.map

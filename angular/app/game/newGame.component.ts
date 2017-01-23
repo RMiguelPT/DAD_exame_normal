@@ -1,4 +1,5 @@
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
+import { GameService } from "./../_services/game.service";
 import { Component } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import { Router } from '@angular/router';
@@ -26,7 +27,7 @@ export class NewGameComponent {
     private winner2: any;
     private creator: any;
 
-	constructor(public router: Router, public http: Http, private websocketService: WebSocketService) {
+	constructor(public router: Router, public http: Http, private websocketService: WebSocketService, private gameService: GameService) {
 		this.uid = sessionStorage.getItem('_id');
 		this.userName = sessionStorage.getItem('username');
 		this.authToken = sessionStorage.getItem('id_token');
@@ -36,6 +37,8 @@ export class NewGameComponent {
         this.winner1='';
         this.winner2='';
         this.creator = sessionStorage.getItem('name');
+
+		this.setCreatorName(this.userName);
 	}
 
 
@@ -50,7 +53,7 @@ export class NewGameComponent {
 			player: player
 		}];
 
-		let playerID = sessionStorage.getItem('_id');
+		let playerID = sessionStorage.getItem('_id') + ' - ' + this.userName;
 		alert(playerID);
 
 		let body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, creator: playerID, players: this.Players, state: 'pending' });
@@ -77,4 +80,9 @@ export class NewGameComponent {
 
 			);
 	}
+
+
+		setCreatorName(username: any) {
+	        this.gameService.setCreatorName(this.userName);
+	  }
 }
