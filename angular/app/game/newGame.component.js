@@ -29,9 +29,9 @@ var NewGameComponent = (function () {
         this.winner1 = '';
         this.winner2 = '';
         this.creator = sessionStorage.getItem('name');
-        this.setCreatorName(this.userName);
     }
     NewGameComponent.prototype.ngOnInit = function () {
+        this.setCreatorName(this.userName);
     };
     NewGameComponent.prototype.createGame = function () {
         var _this = this;

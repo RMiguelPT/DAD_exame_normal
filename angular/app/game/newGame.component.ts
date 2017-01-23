@@ -1,6 +1,6 @@
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
 import { GameService } from "./../_services/game.service";
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import { Router } from '@angular/router';
 import {Routes, RouterModule } from '@angular/router';
@@ -9,13 +9,14 @@ import { AuthenticationService } from './../_services/authentication.service';
 import { BoardComponent } from './board.component';
 
 
+
 @Component({
 	moduleId: module.id,
 	selector: 'newGame',
 	templateUrl: 'newGame.component.html'
 })
 
-export class NewGameComponent {
+export class NewGameComponent implements OnInit {
     public Players: any[] = [];
 	public authToken: any;
 	private path: string;
@@ -37,13 +38,13 @@ export class NewGameComponent {
         this.winner1='';
         this.winner2='';
         this.creator = sessionStorage.getItem('name');
-		this.setCreatorName(this.userName);
+
 		
 	}
 
 	
 	 ngOnInit() {
-        
+        this.setCreatorName(this.userName);
     }
 
     createGame() {

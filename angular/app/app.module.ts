@@ -1,3 +1,5 @@
+import { CardComponent } from './game/card.component';
+import { DeckComponent } from './game/deck.component';
 //import { Authentication } from '../../node/app.authentication';
 import { NewGameComponent } from "./game/newGame.component";
 import { ValidationService } from "./_services/validation.service";
@@ -39,7 +41,10 @@ import { AuthenticationService } from './_services/authentication.service';
                    GameLobbyComponent,
                    TopTenComponent,
                    NewGameComponent,
-                   GameHistoryComponent ],
+                   GameHistoryComponent,
+                   DeckComponent,
+                   CardComponent
+                    ],
   providers:    [ WebSocketService, AuthenticationService, ValidationService, GameService ],
   bootstrap:    [ AppComponent ]
 })
