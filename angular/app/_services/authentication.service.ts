@@ -18,8 +18,6 @@ export class AuthenticationService {
 
     login(event: any, username: any, password: any) {
         console.log("Entrou - LOGIN");
-       
-
         let body = JSON.stringify({username, password});
         let name = JSON.stringify({password});
         let headers = new Headers();
