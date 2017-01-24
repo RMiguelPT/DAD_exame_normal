@@ -8,7 +8,6 @@ export class AuthenticationService {
   private isLogged = false;
   private pathLogin: string;
   private pathLogout: string;
-
   constructor(public router: Router, private http: Http) {
     this.isLogged = !!localStorage.getItem('id_token'); 
     this.pathLogin = 'http://localhost:7777/api/v1/login';

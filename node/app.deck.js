@@ -24,12 +24,11 @@ var Deck = (function () {
         // the JavaScript sample for runtime type checking.
         this._cards.push(card);
     };
-    /* dealCard(): CardComponent {
-         if (this._cards.length === 0)
-             throw new RangeError('No cards to deal.');
-  
-         return this._cards.pop();
-     }*/
+    Deck.prototype.dealCard = function () {
+        if (this._cards.length === 0)
+            throw new RangeError('No cards to deal.');
+        return this._cards.pop();
+    };
     Deck.prototype.shuffle = function (numTimes) {
         if (numTimes === void 0) { numTimes = 100; }
         var cards = this._cards;

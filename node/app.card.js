@@ -12,32 +12,32 @@ var Card = (function () {
         this.suit = suit;
         switch (index) {
             case 1:
-                this.strenght = 11;
+                this.strength = 11;
                 this.points = 11;
                 this.img = "" + suit + index + ".png";
                 break;
             case 7:
-                this.strenght = 10;
+                this.strength = 10;
                 this.points = 10;
                 this.img = "" + suit + index + ".png";
                 break;
             case 11:
-                this.strenght = 7;
+                this.strength = 7;
                 this.points = 2;
                 this.img = "" + suit + index + ".png";
                 break;
             case 12:
-                this.strenght = 8;
+                this.strength = 8;
                 this.points = 3;
                 this.img = "" + suit + index + ".png";
                 break;
             case 13:
-                this.strenght = 9;
+                this.strength = 9;
                 this.points = 4;
                 this.img = "" + suit + index + ".png";
                 break;
             default:
-                this.strenght = index - 1;
+                this.strength = index - 1;
                 this.points = 0;
                 this.img = "" + suit + index + ".png";
                 break;
@@ -46,8 +46,8 @@ var Card = (function () {
         this.turned = false;
     }
     Card.prototype.toString = function () {
-        return this.img + "\n" + "strenght: " +
-            this.strenght + "\n" + "POINTS: " + this.points;
+        return this.img + "\n" + "strength: " +
+            this.strength + "\n" + "POINTS: " + this.points;
     };
     return Card;
 }());
