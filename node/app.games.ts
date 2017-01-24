@@ -136,7 +136,8 @@ export class Game {
     // Routes for the games
     public init = (server: any, settings: HandlerSettings) => {
         server.get(settings.prefix + 'games', settings.security.authorize, this.getGames);
-        server.get(settings.prefix + 'games/:id', settings.security.authorize, this.getGame);
+        //server.get(settings.prefix + 'games/:id', settings.security.authorize, this.getGame);
+        //server.get(settings.prefix + 'games/:id', this.getGame);
         server.get(settings.prefix + 'finishedGames', this.getGamesFinished);
         server.put(settings.prefix + 'games/:id', settings.security.authorize, this.updateGame);
         server.post(settings.prefix + 'games', settings.security.authorize, this.createGame);
