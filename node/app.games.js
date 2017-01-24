@@ -1,7 +1,7 @@
 "use strict";
 var mongodb = require('mongodb');
 var util = require('util');
-var app_database_1 = require('./app.database');
+var app_database_1 = require("./app.database");
 var Game = (function () {
     function Game() {
         var _this = this;
@@ -127,15 +127,13 @@ var Game = (function () {
         // Routes for the games
         this.init = function (server, settings) {
             server.get(settings.prefix + 'games', settings.security.authorize, _this.getGames);
-            server.get(settings.prefix + 'games/:id', settings.security.authorize, _this.getGame);
+            //server.get(settings.prefix + 'games/:id', settings.security.authorize, this.getGame);
+            //server.get(settings.prefix + 'games/:id', this.getGame);
             server.get(settings.prefix + 'finishedGames', _this.getGamesFinished);
             server.put(settings.prefix + 'games/:id', settings.security.authorize, _this.updateGame);
             server.post(settings.prefix + 'games', settings.security.authorize, _this.createGame);
             server.get(settings.prefix + 'pendingGames', _this.getGamesPending);
             server.get(settings.prefix + 'runningGames', _this.getGamesRunnig);
-            //server.get(settings.prefix + 'games', settings.security.authorize, this.getGamesRunnig);
-            //server.get(settings.prefix + 'runningGames', this.getGamesRunnig);
-            //server.get(settings.prefix + 'pendingGames', this.getGamesPending);
             server.del(settings.prefix + 'games/:id', settings.security.authorize, _this.deleteGame);
             console.log("Games routes registered");
         };

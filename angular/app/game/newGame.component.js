@@ -37,14 +37,15 @@ var NewGameComponent = (function () {
         var _this = this;
         var player = {
             uid: this.uid, name: this.userName,
-            statusDate: Date.now(), score: 0
+            statusDate: Date.now(), score: 0, stars: 0
         };
         this.Players = [{
                 player: player
             }];
         var playerID = sessionStorage.getItem('_id') + ' - ' + this.userName;
         alert(playerID);
-        var body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, creator: playerID, players: this.Players, state: 'pending' });
+        var body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2,
+            creator: playerID, players: this.Players, state: 'pending' });
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'bearer ' + this.authToken);

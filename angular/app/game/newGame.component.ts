@@ -51,7 +51,7 @@ export class NewGameComponent implements OnInit {
 
 		let player: any = {
 			uid: this.uid, name: this.userName,
-			statusDate: Date.now(), score: 0
+			statusDate: Date.now(), score: 0, stars:0
 		};
 
 		this.Players = [{
@@ -61,7 +61,9 @@ export class NewGameComponent implements OnInit {
 		let playerID = sessionStorage.getItem('_id') + ' - ' + this.userName;
 		alert(playerID);
 
-		let body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, creator: playerID, players: this.Players, state: 'pending' });
+		let body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, 
+			creator: playerID, players: this.Players, state: 'pending' });
+		
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
 		headers.append('Authorization', 'bearer ' + this.authToken);
