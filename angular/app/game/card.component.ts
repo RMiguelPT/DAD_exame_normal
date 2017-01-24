@@ -10,18 +10,7 @@ import { GameService } from "./../_services/game.service";
     templateUrl: 'card.component.html'
     //styleUrls: ['board.component.css']
 })
-export class CardComponent implements OnInit{
-    
+export class CardComponent {
+     
    
-
-    constructor(private gameService: GameService ) {
-       
-    }
-
-    ngOnInit() {
-        
-    }
-
-
-
 }

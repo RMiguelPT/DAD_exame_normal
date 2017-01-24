@@ -1,7 +1,8 @@
 "use strict";
 var mongodb = require('mongodb');
 var util = require('util');
-var app_database_1 = require('./app.database');
+var app_database_1 = require("./app.database");
+var app_deck_1 = require("./app.deck");
 var Game = (function () {
     function Game() {
         var _this = this;
@@ -104,6 +105,9 @@ var Game = (function () {
                 .insertOne(game)
                 .then(function (result) { return _this.returnGame(result.insertedId, response, next); })
                 .catch(function (err) { return _this.handleError(err, response, next); });
+            var deck;
+            deck = new app_deck_1.Deck();
+            deck.createDeck();
         };
         this.deleteGame = function (request, response, next) {
             var id = new mongodb.ObjectID(request.params.id);
@@ -133,9 +137,6 @@ var Game = (function () {
             server.post(settings.prefix + 'games', settings.security.authorize, _this.createGame);
             server.get(settings.prefix + 'pendingGames', _this.getGamesPending);
             server.get(settings.prefix + 'runningGames', _this.getGamesRunnig);
-            //server.get(settings.prefix + 'games', settings.security.authorize, this.getGamesRunnig);
-            //server.get(settings.prefix + 'runningGames', this.getGamesRunnig);
-            //server.get(settings.prefix + 'pendingGames', this.getGamesPending);
             server.del(settings.prefix + 'games/:id', settings.security.authorize, _this.deleteGame);
             console.log("Games routes registered");
         };

@@ -24,7 +24,6 @@ import { TopTenComponent } from './topten/topten.component';
 import { GameHistoryComponent } from './game/gameHistory.component';
 import { GameService } from './_services/game.service';
 
-
 //services
 import { AuthenticationService } from './_services/authentication.service';
 
@@ -45,7 +44,7 @@ import { AuthenticationService } from './_services/authentication.service';
                    DeckComponent,
                    CardComponent
                     ],
-  providers:    [ WebSocketService, AuthenticationService, ValidationService, GameService ],
+  providers:    [ WebSocketService, AuthenticationService, ValidationService, GameService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
