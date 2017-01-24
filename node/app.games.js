@@ -2,6 +2,7 @@
 var mongodb = require('mongodb');
 var util = require('util');
 var app_database_1 = require("./app.database");
+var app_deck_1 = require("./app.deck");
 var Game = (function () {
     function Game() {
         var _this = this;
@@ -104,6 +105,9 @@ var Game = (function () {
                 .insertOne(game)
                 .then(function (result) { return _this.returnGame(result.insertedId, response, next); })
                 .catch(function (err) { return _this.handleError(err, response, next); });
+            var deck;
+            deck = new app_deck_1.Deck();
+            // deck.createDeck();
         };
         this.deleteGame = function (request, response, next) {
             var id = new mongodb.ObjectID(request.params.id);

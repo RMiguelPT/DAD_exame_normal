@@ -2,13 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import {WebSocketService } from '../notifications/websocket.service';
 import { NewGameComponent } from './../game/newGame.component';
 import { GameService } from "./../_services/game.service";
+import {CardComponent} from "./card.component";
 
-enum Suit {
-    copas,
-    espadas,
-    ouros,
-    paus,
-}
+
 
 @Component({
     moduleId: module.id,
@@ -16,17 +12,8 @@ enum Suit {
     templateUrl: 'deck.component.html'
     //styleUrls: ['board.component.css']
 })
-export class DeckComponent implements OnInit{
+export class DeckComponent{
    
-      static Suit = Suit;
-
-    constructor(private websocketService: WebSocketService, private gameService: GameService ) {
-       
-    }
-
-    ngOnInit() {
-
-    }
 
 
 
