@@ -8,7 +8,7 @@
 
         <div style="padding-top:30px" class="panel-body" >
             <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>  
-                <form role="form" (submit)="login($event, username.value, password.value)">
+                <form role="form" (submit)="login($event, username.strenght, password.strenght)">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" #username class="form-control" id="username" placeholder="Username">

@@ -18,6 +18,11 @@ export class Deck {
 
     constructor() {
         this._cards = [];
+        this.createDeck();
+        this.shuffle(200);
+        this._cards.forEach(element => {
+            console.log(element.toString());
+        });
     }
  
     addCard(card: Card): void {
@@ -28,14 +33,16 @@ export class Deck {
         this._cards.push(card);
     }
  
-   /* dealCard(): CardComponent {
+   dealCard(): Card {
         if (this._cards.length === 0)
             throw new RangeError('No cards to deal.');
+
  
         return this._cards.pop();
-    }*/
+}
  
-  /*  shuffle(numTimes: number = 5): void {
+
+   shuffle(numTimes: number = 100): void {
         var cards = this._cards;
         var cardCount = cards.length;
  
@@ -51,7 +58,7 @@ export class Deck {
                 cards[index] = temp;
             }
         }
-    }*/
+    }
  
    
    public createDeck(){
@@ -61,21 +68,23 @@ export class Deck {
           for(var i = 1; i<=10; i++)
           {
               if (suit == Suit.copas){
-                card = new Card("c");
+                card = new Card("c", i);
               }
               if (suit == Suit.espadas){
-                card = new Card("e");
+                card = new Card("e", i);
               }
               if (suit == Suit.ouros){
-                  card = new Card("o");
+                  card = new Card("o", i);
               }
               if (suit == Suit.paus){
-               card = new Card("p");
+               card = new Card("p", i);
               }
-
+              this.addCard(card);
+              
               //console.log("" + i + " " + card.toString());
           }
       }
+      console.log("Deck created");
    }
 
 

@@ -107,7 +107,7 @@ var Game = (function () {
                 .catch(function (err) { return _this.handleError(err, response, next); });
             var deck;
             deck = new app_deck_1.Deck();
-            deck.createDeck();
+            // deck.createDeck();
         };
         this.deleteGame = function (request, response, next) {
             var id = new mongodb.ObjectID(request.params.id);

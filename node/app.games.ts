@@ -116,7 +116,7 @@ export class Game {
 
             var deck: Deck;
             deck = new Deck();
-            deck.createDeck();
+           // deck.createDeck();
     }
 
     public deleteGame =  (request: any, response: any, next: any) => {
