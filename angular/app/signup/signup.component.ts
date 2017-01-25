@@ -21,16 +21,15 @@ export class SignUpComponent {
 
     }
 
-    validate(name: any, username: any, password: any, confirmpassword: any, email: any) {
-        return true;
-    }
+   
     
     createPlayer(name: any, username: any, passwordHash: any, confirmpassword: any, email: any) {
         console.log("Entrou - SIGNUP");
         let avatar = "avatar_def.png";
         let totalVictories = 0;
+        let totalPoints =  0;
 
-        let body = JSON.stringify({ name, username, passwordHash, email, avatar, totalVictories });
+        let body = JSON.stringify({ name, username, passwordHash, email, avatar, totalVictories, totalPoints });
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         this.http

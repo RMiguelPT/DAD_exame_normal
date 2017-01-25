@@ -19,15 +19,13 @@ var SignUpComponent = (function () {
         this.validation = validation;
         this.serverPath = 'http://localhost:7777/api/v1/players';
     }
-    SignUpComponent.prototype.validate = function (name, username, password, confirmpassword, email) {
-        return true;
-    };
     SignUpComponent.prototype.createPlayer = function (name, username, passwordHash, confirmpassword, email) {
         var _this = this;
         console.log("Entrou - SIGNUP");
         var avatar = "avatar_def.png";
         var totalVictories = 0;
-        var body = JSON.stringify({ name: name, username: username, passwordHash: passwordHash, email: email, avatar: avatar, totalVictories: totalVictories });
+        var totalPoints = 0;
+        var body = JSON.stringify({ name: name, username: username, passwordHash: passwordHash, email: email, avatar: avatar, totalVictories: totalVictories, totalPoints: totalPoints });
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         this.http
