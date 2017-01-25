@@ -2,7 +2,7 @@
 var mongodb = require('mongodb');
 var util = require('util');
 var sha1 = require('sha1');
-var app_database_1 = require('./app.database');
+var app_database_1 = require("./app.database");
 var Player = (function () {
     function Player() {
         var _this = this;
@@ -138,3 +138,4 @@ var Player = (function () {
     return Player;
 }());
 exports.Player = Player;
+//# sourceMappingURL=app.players.js.map
