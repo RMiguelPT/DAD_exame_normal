@@ -21,7 +21,7 @@ var NewGameComponent = (function () {
         this.gameService = gameService;
         this.Players = [];
         this.uid = sessionStorage.getItem('_id');
-        this.userName = sessionStorage.getItem('username');
+        this.userName = sessionStorage.getItem('name');
         this.authToken = sessionStorage.getItem('id_token');
         this.path = 'http://localhost:7777/api/v1/';
         this.beginDate = Date.now();
@@ -39,11 +39,8 @@ var NewGameComponent = (function () {
             uid: this.uid, name: this.userName,
             statusDate: Date.now(), score: 0, stars: 0
         };
-        this.Players = [{
-                player: player
-            }];
+        this.Players.push(player);
         var playerID = sessionStorage.getItem('_id') + ' - ' + this.userName;
-        alert(playerID);
         var body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2,
             creator: playerID, players: this.Players, state: 'pending' });
         var headers = new http_1.Headers();

@@ -17,6 +17,9 @@ var BoardComponent = (function () {
         this.gameService = gameService;
         this.elementos = [];
         this.creatorName = '';
+        this.player2Name = '';
+        this.player3Name = '';
+        this.player4Name = '';
     }
     BoardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,6 +29,9 @@ var BoardComponent = (function () {
             _this.elementos = m;
         });
         this.getCreatorName();
+        this.getPlayer2Name();
+        this.getPlayer3Name();
+        this.getPlayer4Name();
     };
     BoardComponent.prototype.clickElemento = function (index) {
         this.websocketService.sendClickElementMessage(index);
@@ -40,6 +46,15 @@ var BoardComponent = (function () {
     };
     BoardComponent.prototype.getCreatorName = function () {
         this.creatorName = this.gameService.getCreatorName();
+    };
+    BoardComponent.prototype.getPlayer2Name = function () {
+        this.player2Name = this.gameService.getPlayer2Name();
+    };
+    BoardComponent.prototype.getPlayer3Name = function () {
+        this.player3Name = this.gameService.getPlayer3Name();
+    };
+    BoardComponent.prototype.getPlayer4Name = function () {
+        this.player4Name = this.gameService.getPlayer4Name();
     };
     return BoardComponent;
 }());

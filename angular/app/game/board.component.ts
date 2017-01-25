@@ -12,6 +12,9 @@ import { GameService } from "./../_services/game.service";
 export class BoardComponent implements OnInit{
     public elementos: number[] = [];
     public creatorName ='';
+    public player2Name='';
+    public player3Name='';
+    public player4Name='';
 
     constructor(private websocketService: WebSocketService, private gameService: GameService ) {
        
@@ -24,6 +27,9 @@ export class BoardComponent implements OnInit{
             this.elementos = m;
         });
          this.getCreatorName();
+         this.getPlayer2Name();
+         this.getPlayer3Name();
+         this.getPlayer4Name();
     }
     
     clickElemento(index: number){
@@ -41,6 +47,18 @@ export class BoardComponent implements OnInit{
 
     getCreatorName(){
         this.creatorName = this.gameService.getCreatorName();
+    }
+
+    getPlayer2Name() {
+        this.player2Name = this.gameService.getPlayer2Name();
+    }
+
+     getPlayer3Name() {
+        this.player3Name = this.gameService.getPlayer3Name();
+    }
+
+     getPlayer4Name() {
+        this.player4Name = this.gameService.getPlayer4Name();
     }
 }
 
