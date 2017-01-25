@@ -73,25 +73,7 @@ export class GameLobbyComponent {
 
     }
     joinGame(gameId : any){
-        /*
-         console.log(gameId);
-         let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-
-        //get servidor
-         let game = this.http
-            .get(this.Path + 'games/:id', <RequestOptionsArgs>{ headers: headers, withCredentials: false })
-            .subscribe(
-            response => {
-                this.updateGame = response.json();
-                console.log(response.json());
-            },
-            error => {
-                //alert(error.text());
-                console.log(error.text());
-            }
-            );*/
+      
 
         let player: any;    
          
