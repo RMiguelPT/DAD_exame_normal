@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import {WebSocketService } from '../notifications/websocket.service';
 import { NewGameComponent } from './../game/newGame.component';
 import { GameService } from "./../_services/game.service";
+import { elementAt } from 'rxjs/operator/elementAt';
 
 @Component({
     moduleId: module.id,
