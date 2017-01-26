@@ -100,26 +100,35 @@ export class GameLobbyComponent {
                     this.body = JSON.stringify({ players: this.userGames, state: 'pending' });
                     this.updateGame(this.body, this.gameId);
                     for (let item of games) {
+                            if (i==0) {
+                                console.log(item.name);
+                                console.log(item.avatar);
+                                this.game.setCreatorNameAndAvatar(item.name, item.avatar);
+                            }
+
                             if (i==1) {
                                 console.log(item.name);
-                                this.game.setPlayer2Name(item.name);
+                                console.log(item.avatar);
+                                this.game.setPlayer2NameAndAvatar(item.name, item.avatar);
                             }
 
                             if (i==2) {
                                 console.log(item.name);
-                                this.game.setPlayer3Name(item.name);
+                                console.log(item.avatar);
+                                this.game.setPlayer3NameAndAvatar(item.name, item.avatar);
                             }
 
                             if (i==3) {
                                 console.log(item.name);
-                                this.game.setPlayer4Name(item.name);
+                                this.game.setPlayer4NameAndAvatar(item.name, item.avatar);
+                                this.body = JSON.stringify({ players: this.userGames, state: 'playing' });
+                                this.updateGame(this.body, this.gameId);
                             }
-
+                            i++;
                         }
                 
                 }else {
                     alert ('TOTAL PLAYERS MAXED OUT');
-                    joinButton.hidden;
                 }
         },
             error => {
@@ -127,12 +136,7 @@ export class GameLobbyComponent {
                 console.log(error.text());
             }
             );       
-       
- 
         console.log(gameId);
-        console.log('tot players ->',this.userGames);
-
-
     }
 
 
@@ -155,7 +159,7 @@ export class GameLobbyComponent {
                     console.log(this.userGames);
                     this.userGames.push({
                         uid: this.uid, name: this.player,
-                        statusDate: Date.now(), score: 0, stars:0
+                        statusDate: Date.now(), score: 0, stars:0, avatar: this.avatar
                     });       
                     this.body = JSON.stringify({ players: this.userGames, state: 'pending' });
                     this.updateGame(this.body, gameId);

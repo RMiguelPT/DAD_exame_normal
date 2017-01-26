@@ -22,6 +22,7 @@ export class NewGameComponent implements OnInit {
 	private path: string;
 	private uid: any;
 	private userName: any;
+	private avatar: any;
     private beginDate: any;
     private endDate: any;
     private winner1: any;
@@ -32,32 +33,29 @@ export class NewGameComponent implements OnInit {
 		this.uid = sessionStorage.getItem('_id');
 		this.userName = sessionStorage.getItem('name');
 		this.authToken = sessionStorage.getItem('id_token');
+		this.avatar = sessionStorage.getItem('avatar');
 		this.path = 'http://localhost:7777/api/v1/';
         this.beginDate = Date.now();
         this.endDate='';
         this.winner1='';
         this.winner2='';
         this.creator = sessionStorage.getItem('name');
-
-		
 	}
 
 	
 	 ngOnInit() {
-        this.setCreatorName(this.userName);
+        this.setCreatorNameAndAvatar(this.userName, this.avatar);
     }
 
     createGame() {
 
 		let player: any = {
 			uid: this.uid, name: this.userName,
-			statusDate: Date.now(), score: 0, stars:0
+			statusDate: Date.now(), score: 0, stars:0, avatar: this.avatar
 		};
 
 		
 		this.Players.push(player);
-		
-
 		let playerID = sessionStorage.getItem('_id') + ' - ' + this.userName;
 		
 
@@ -83,13 +81,10 @@ export class NewGameComponent implements OnInit {
 				alert(error.text());
 				console.log(error.text());
 			}
-
-
 			);
 	}
-
-
-		setCreatorName(username: any) {
-	        this.gameService.setCreatorName(this.userName);
+		setCreatorNameAndAvatar(username: any, avatar: any) {
+			console.log(this.avatar);
+	        this.gameService.setCreatorNameAndAvatar(this.userName, this.avatar);
 	  }
 }

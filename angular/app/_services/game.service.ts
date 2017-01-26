@@ -9,49 +9,63 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class GameService {
     private creatorName = '';
+    private creatorAvatar:any;
     private player2Name = '';
+    private player2Avatar: any;
     private player3Name = '';
+    private player3Avatar: any;
     private player4Name = '';
-     public authToken:string = sessionStorage.getItem('id_token');
-     private Path: string;
+    private player4Avatar: any;
+    public authToken:string = sessionStorage.getItem('id_token');
+    private Path: string;
 
 
     
 constructor(public router: Router, private http: Http){}
     
-     setPlayer2Name(name: any) {
+     setPlayer2NameAndAvatar(name: any, avatar: any) {
         this.player2Name = name;
+        this.player2Avatar = avatar;
     }
 
     getPlayer2Name(){
         return this.player2Name;
-        
-
     }
 
-     setPlayer3Name(name: any) {
+    getPlayer2Avatar() {
+        return this.player2Avatar;
+    }
+
+     setPlayer3NameAndAvatar(name: any, avatar: any) {
         this.player3Name = name;
-        
-    
+        this.player3Avatar = avatar;
     }
 
     getPlayer3Name(){
         return this.player3Name;
     }
 
-     setPlayer4Name(name: any) {
+    getPlayer3Avatar(){
+        return this.getPlayer3Avatar;
+    }
+
+     setPlayer4NameAndAvatar(name: any, avatar: any) {
         this.player4Name = name;
-       
-    
+        this.player4Avatar = avatar;
     }
 
     getPlayer4Name(){
         return this.player4Name;
     }
 
+    getPlayer4Avatar() {
+        return this.player4Avatar;
+    }
 
-    setCreatorName(creator: any) {
+
+    setCreatorNameAndAvatar(creator: any, avatar: any) {
         this.creatorName = creator;
+        this.creatorAvatar = avatar;
     
     }
 
@@ -59,55 +73,11 @@ constructor(public router: Router, private http: Http){}
         return this.creatorName;
     }
 
-    /*
-    updateBoardNames(gameId: any) {
-        let totPlayers: any;
-        let games: any[] = [];
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', 'bearer ' + this.authToken);
-        this.http.get(this.Path + 'games/' + gameId, <RequestOptionsArgs>{ headers: headers, withCredentials: false })
-            .subscribe(
-            response => {
-                //get the total players number
-                totPlayers = response.json().players.length;
-                games = response.json().players;
-                if (totPlayers < 4) {
-                    this.getGame(this.gameId);
-                    this.userGames = [{player: player}];
-                    this.body = JSON.stringify({ players: this.userGames, state: 'pending' });
-                    this.updateGame(this.body, this.gameId);
-                    for (let item of games) {
-                            if (i==1) {
-                                console.log(item.name);
-                                this.game.setPlayer2Name(item.name);
-                            }
-
-                            if (i==2) {
-                                console.log(item.name);
-                                this.game.setPlayer3Name(item.name);
-                            }
-
-                            if (i==3) {
-                                console.log(item.name);
-                                this.game.setPlayer4Name(item.name);
-                            }
-
-                        }
-                
-                }else {
-                   
-                    
-                }
-        },
-            error => {
-                //alert(error.text());
-                console.log(error.text());
-            }
-            );   
+    getCreatorAvatar(){
+        return this.creatorAvatar;
     }
+
     
-*/
 }
 
 
