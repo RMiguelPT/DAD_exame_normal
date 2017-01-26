@@ -25,6 +25,9 @@ var WebSocketServer = (function () {
         this.notifyAll = function (channel, message) {
             _this.io.sockets.emit(channel, message);
         };
+        this.notifyGameId = function (channel, message, gameId) {
+            _this.io.sockets.emit(channel, message, gameId);
+        };
     }
     WebSocketServer.prototype.initBoard = function () {
         for (var i = 0; i < 100; i++) {

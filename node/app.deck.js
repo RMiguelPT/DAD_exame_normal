@@ -67,7 +67,7 @@ var Deck = (function () {
         }
         console.log("Deck created");
     };
-    Deck.Suit = Suit;
     return Deck;
 }());
+Deck.Suit = Suit;
 exports.Deck = Deck;

@@ -33,4 +33,8 @@ export class WebSocketServer {
    public notifyAll = (channel: string, message: any) => {
         this.io.sockets.emit(channel, message);
     }; 
+
+   public notifyGameId = (channel: string, message: any, gameId: any) => {
+       this.io.sockets.emit(channel,message, gameId);
+   } 
 };
