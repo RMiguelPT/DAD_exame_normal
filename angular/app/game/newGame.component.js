@@ -23,6 +23,7 @@ var NewGameComponent = (function () {
         this.uid = sessionStorage.getItem('_id');
         this.userName = sessionStorage.getItem('name');
         this.authToken = sessionStorage.getItem('id_token');
+        this.avatar = sessionStorage.getItem('avatar');
         this.path = 'http://localhost:7777/api/v1/';
         this.beginDate = Date.now();
         this.endDate = '';
@@ -31,13 +32,13 @@ var NewGameComponent = (function () {
         this.creator = sessionStorage.getItem('name');
     }
     NewGameComponent.prototype.ngOnInit = function () {
-        this.setCreatorName(this.userName);
+        this.setCreatorNameAndAvatar(this.userName, this.avatar);
     };
     NewGameComponent.prototype.createGame = function () {
         var _this = this;
         var player = {
             uid: this.uid, name: this.userName,
-            statusDate: Date.now(), score: 0, stars: 0
+            statusDate: Date.now(), score: 0, stars: 0, avatar: this.avatar
         };
         this.Players.push(player);
         var playerID = sessionStorage.getItem('_id') + ' - ' + this.userName;
@@ -58,8 +59,9 @@ var NewGameComponent = (function () {
             console.log(error.text());
         });
     };
-    NewGameComponent.prototype.setCreatorName = function (username) {
-        this.gameService.setCreatorName(this.userName);
+    NewGameComponent.prototype.setCreatorNameAndAvatar = function (username, avatar) {
+        console.log(this.avatar);
+        this.gameService.setCreatorNameAndAvatar(this.userName, this.avatar);
     };
     return NewGameComponent;
 }());

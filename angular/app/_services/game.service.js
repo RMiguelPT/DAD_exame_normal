@@ -21,29 +21,45 @@ var GameService = (function () {
         this.player4Name = '';
         this.authToken = sessionStorage.getItem('id_token');
     }
-    GameService.prototype.setPlayer2Name = function (name) {
+    GameService.prototype.setPlayer2NameAndAvatar = function (name, avatar) {
         this.player2Name = name;
+        this.player2Avatar = avatar;
     };
     GameService.prototype.getPlayer2Name = function () {
         return this.player2Name;
     };
-    GameService.prototype.setPlayer3Name = function (name) {
+    GameService.prototype.getPlayer2Avatar = function () {
+        return this.player2Avatar;
+    };
+    GameService.prototype.setPlayer3NameAndAvatar = function (name, avatar) {
         this.player3Name = name;
+        this.player3Avatar = avatar;
     };
     GameService.prototype.getPlayer3Name = function () {
         return this.player3Name;
     };
-    GameService.prototype.setPlayer4Name = function (name) {
+    GameService.prototype.getPlayer3Avatar = function () {
+        return this.getPlayer3Avatar;
+    };
+    GameService.prototype.setPlayer4NameAndAvatar = function (name, avatar) {
         this.player4Name = name;
+        this.player4Avatar = avatar;
     };
     GameService.prototype.getPlayer4Name = function () {
         return this.player4Name;
     };
-    GameService.prototype.setCreatorName = function (creator) {
+    GameService.prototype.getPlayer4Avatar = function () {
+        return this.player4Avatar;
+    };
+    GameService.prototype.setCreatorNameAndAvatar = function (creator, avatar) {
         this.creatorName = creator;
+        this.creatorAvatar = avatar;
     };
     GameService.prototype.getCreatorName = function () {
         return this.creatorName;
+    };
+    GameService.prototype.getCreatorAvatar = function () {
+        return this.creatorAvatar;
     };
     return GameService;
 }());

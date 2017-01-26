@@ -29,9 +29,13 @@ var BoardComponent = (function () {
             _this.elementos = m;
         });
         this.getCreatorName();
+        this.getCreatorAvatar();
         this.getPlayer2Name();
+        this.getPlayer2Avatar();
         this.getPlayer3Name();
+        this.getPlayer3Avatar();
         this.getPlayer4Name();
+        this.getPlayer4Avatar();
     };
     BoardComponent.prototype.clickElemento = function (index) {
         this.websocketService.sendClickElementMessage(index);
@@ -47,14 +51,26 @@ var BoardComponent = (function () {
     BoardComponent.prototype.getCreatorName = function () {
         this.creatorName = this.gameService.getCreatorName();
     };
+    BoardComponent.prototype.getCreatorAvatar = function () {
+        this.creatorAvatar = this.gameService.getCreatorAvatar();
+    };
     BoardComponent.prototype.getPlayer2Name = function () {
         this.player2Name = this.gameService.getPlayer2Name();
+    };
+    BoardComponent.prototype.getPlayer2Avatar = function () {
+        this.player2Avatar = this.gameService.getPlayer2Avatar();
     };
     BoardComponent.prototype.getPlayer3Name = function () {
         this.player3Name = this.gameService.getPlayer3Name();
     };
+    BoardComponent.prototype.getPlayer3Avatar = function () {
+        this.player3Avatar = this.gameService.getPlayer3Avatar();
+    };
     BoardComponent.prototype.getPlayer4Name = function () {
         this.player4Name = this.gameService.getPlayer4Name();
+    };
+    BoardComponent.prototype.getPlayer4Avatar = function () {
+        this.player4Avatar = this.gameService.getPlayer4Avatar();
     };
     return BoardComponent;
 }());

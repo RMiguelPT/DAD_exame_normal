@@ -84,30 +84,38 @@ var GameLobbyComponent = (function () {
                 _this.updateGame(_this.body, _this.gameId);
                 for (var _i = 0, games_1 = games; _i < games_1.length; _i++) {
                     var item = games_1[_i];
+                    if (i == 0) {
+                        console.log(item.name);
+                        console.log(item.avatar);
+                        _this.game.setCreatorNameAndAvatar(item.name, item.avatar);
+                    }
                     if (i == 1) {
                         console.log(item.name);
-                        _this.game.setPlayer2Name(item.name);
+                        console.log(item.avatar);
+                        _this.game.setPlayer2NameAndAvatar(item.name, item.avatar);
                     }
                     if (i == 2) {
                         console.log(item.name);
-                        _this.game.setPlayer3Name(item.name);
+                        console.log(item.avatar);
+                        _this.game.setPlayer3NameAndAvatar(item.name, item.avatar);
                     }
                     if (i == 3) {
                         console.log(item.name);
-                        _this.game.setPlayer4Name(item.name);
+                        _this.game.setPlayer4NameAndAvatar(item.name, item.avatar);
+                        _this.body = JSON.stringify({ players: _this.userGames, state: 'playing' });
+                        _this.updateGame(_this.body, _this.gameId);
                     }
+                    i++;
                 }
             }
             else {
                 alert('TOTAL PLAYERS MAXED OUT');
-                joinButton.hidden;
             }
         }, function (error) {
             //alert(error.text());
             console.log(error.text());
         });
         console.log(gameId);
-        console.log('tot players ->', this.userGames);
     };
     GameLobbyComponent.prototype.getGame = function (gameId) {
         var _this = this;
@@ -124,7 +132,7 @@ var GameLobbyComponent = (function () {
                 console.log(_this.userGames);
                 _this.userGames.push({
                     uid: _this.uid, name: _this.player,
-                    statusDate: Date.now(), score: 0, stars: 0
+                    statusDate: Date.now(), score: 0, stars: 0, avatar: _this.avatar
                 });
                 _this.body = JSON.stringify({ players: _this.userGames, state: 'pending' });
                 _this.updateGame(_this.body, gameId);
