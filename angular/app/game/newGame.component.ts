@@ -30,7 +30,7 @@ export class NewGameComponent implements OnInit {
 
 	constructor(public router: Router, public http: Http, private websocketService: WebSocketService, private gameService: GameService) {
 		this.uid = sessionStorage.getItem('_id');
-		this.userName = sessionStorage.getItem('username');
+		this.userName = sessionStorage.getItem('name');
 		this.authToken = sessionStorage.getItem('id_token');
 		this.path = 'http://localhost:7777/api/v1/';
         this.beginDate = Date.now();
@@ -54,12 +54,12 @@ export class NewGameComponent implements OnInit {
 			statusDate: Date.now(), score: 0, stars:0
 		};
 
-		this.Players = [{
-			player: player
-		}];
+		
+		this.Players.push(player);
+		
 
 		let playerID = sessionStorage.getItem('_id') + ' - ' + this.userName;
-		alert(playerID);
+		
 
 		let body = JSON.stringify({ beginDate: this.beginDate, endDate: this.endDate, winner1: this.winner1, winner2: this.winner2, 
 			creator: playerID, players: this.Players, state: 'pending' });

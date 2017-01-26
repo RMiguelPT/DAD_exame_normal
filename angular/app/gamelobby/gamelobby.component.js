@@ -61,23 +61,64 @@ var GameLobbyComponent = (function () {
         });
     };
     GameLobbyComponent.prototype.joinGame = function (gameId) {
+        var _this = this;
+        var joinButton = document.getElementById('joinGame');
+        var totPlayers;
         var player;
         this.gameId = gameId;
-        this.getGame(this.gameId);
-        this.userGames = [{ player: player }];
-        this.userGames.push({ player: this.uid, score: 0 });
-        this.body = JSON.stringify({ players: this.userGames, state: 'pending' });
-        this.updateGame(this.body, this.gameId);
-        console.log(gameId);
-        console.log(this.userGames);
-    };
-    GameLobbyComponent.prototype.getGame = function (gameId) {
-        var _this = this;
         var headers = new http_1.Headers();
+        var totPlayers;
+        var games = [];
+        var i = 1;
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'bearer ' + this.authToken);
         this.http.get(this.Path + 'games/' + gameId, { headers: headers, withCredentials: false })
             .subscribe(function (response) {
+            //get the total players number
+            totPlayers = response.json().players.length;
+            games = response.json().players;
+            if (totPlayers < 4) {
+                _this.getGame(_this.gameId);
+                _this.userGames = [{ player: player }];
+                _this.body = JSON.stringify({ players: _this.userGames, state: 'pending' });
+                _this.updateGame(_this.body, _this.gameId);
+                for (var _i = 0, games_1 = games; _i < games_1.length; _i++) {
+                    var item = games_1[_i];
+                    if (i == 1) {
+                        console.log(item.name);
+                        _this.game.setPlayer2Name(item.name);
+                    }
+                    if (i == 2) {
+                        console.log(item.name);
+                        _this.game.setPlayer3Name(item.name);
+                    }
+                    if (i == 3) {
+                        console.log(item.name);
+                        _this.game.setPlayer4Name(item.name);
+                    }
+                }
+            }
+            else {
+                alert('TOTAL PLAYERS MAXED OUT');
+                joinButton.hidden;
+            }
+        }, function (error) {
+            //alert(error.text());
+            console.log(error.text());
+        });
+        console.log(gameId);
+        console.log('tot players ->', this.userGames);
+    };
+    GameLobbyComponent.prototype.getGame = function (gameId) {
+        var _this = this;
+        var joinButton = document.getElementById('joinGame');
+        var headers = new http_1.Headers();
+        var totPlayers;
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', 'bearer ' + this.authToken);
+        this.http.get(this.Path + 'games/' + gameId, { headers: headers, withCredentials: false })
+            .subscribe(function (response) {
+            totPlayers = response.json().players.length;
             if (response.json().players.length < 4) {
                 _this.userGames = response.json().players;
                 console.log(_this.userGames);
@@ -87,6 +128,9 @@ var GameLobbyComponent = (function () {
                 });
                 _this.body = JSON.stringify({ players: _this.userGames, state: 'pending' });
                 _this.updateGame(_this.body, gameId);
+            }
+            else {
+                var joinButton = document.getElementById('joinGame').hidden;
             }
         }, function (error) {
             alert(error.text());

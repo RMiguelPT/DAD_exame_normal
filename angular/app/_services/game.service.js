@@ -16,7 +16,29 @@ var GameService = (function () {
         this.router = router;
         this.http = http;
         this.creatorName = '';
+        this.player2Name = '';
+        this.player3Name = '';
+        this.player4Name = '';
+        this.authToken = sessionStorage.getItem('id_token');
     }
+    GameService.prototype.setPlayer2Name = function (name) {
+        this.player2Name = name;
+    };
+    GameService.prototype.getPlayer2Name = function () {
+        return this.player2Name;
+    };
+    GameService.prototype.setPlayer3Name = function (name) {
+        this.player3Name = name;
+    };
+    GameService.prototype.getPlayer3Name = function () {
+        return this.player3Name;
+    };
+    GameService.prototype.setPlayer4Name = function (name) {
+        this.player4Name = name;
+    };
+    GameService.prototype.getPlayer4Name = function () {
+        return this.player4Name;
+    };
     GameService.prototype.setCreatorName = function (creator) {
         this.creatorName = creator;
     };
