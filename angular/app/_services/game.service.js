@@ -39,7 +39,7 @@ var GameService = (function () {
         return this.player3Name;
     };
     GameService.prototype.getPlayer3Avatar = function () {
-        return this.getPlayer3Avatar;
+        return this.player3Avatar;
     };
     GameService.prototype.setPlayer4NameAndAvatar = function (name, avatar) {
         this.player4Name = name;
