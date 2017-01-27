@@ -46,7 +46,7 @@ constructor(public router: Router, private http: Http){}
     }
 
     getPlayer3Avatar(){
-        return this.getPlayer3Avatar;
+        return this.player3Avatar;
     }
 
      setPlayer4NameAndAvatar(name: any, avatar: any) {

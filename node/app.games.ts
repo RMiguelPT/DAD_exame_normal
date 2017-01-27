@@ -149,6 +149,7 @@ export class Game {
         server.get(settings.prefix + 'pendingGames',  this.getGamesPending);
         server.get(settings.prefix + 'runningGames',  this.getGamesRunnig);
         server.del(settings.prefix + 'games/:id', settings.security.authorize, this.deleteGame);
+        server.get(settings.prefix + 'games/:id', settings.security.authorize, this.getGame);
         console.log("Games routes registered");
     };    
 }

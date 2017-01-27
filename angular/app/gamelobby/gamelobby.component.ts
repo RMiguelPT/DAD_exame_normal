@@ -16,7 +16,7 @@ import { GameService } from "./../_services/game.service";
     templateUrl: `gamelobby.component.html`
 })
 export class GameLobbyComponent { 
-        public player = sessionStorage.getItem('name').toString();
+        public player = sessionStorage.getItem('name');
         public avatar = sessionStorage.getItem('avatar');
         private uid = sessionStorage.getItem('_id');
         public authToken:string = sessionStorage.getItem('id_token');
@@ -77,7 +77,7 @@ export class GameLobbyComponent {
             );
 
     }
-    joinGame(gameId : any, ){
+    joinGame(gameId : any ){
         var joinButton = document.getElementById('joinGame');
         var totPlayers: any;
         let player: any;  

@@ -139,6 +139,7 @@ var Game = (function () {
             server.get(settings.prefix + 'pendingGames', _this.getGamesPending);
             server.get(settings.prefix + 'runningGames', _this.getGamesRunnig);
             server.del(settings.prefix + 'games/:id', settings.security.authorize, _this.deleteGame);
+            server.get(settings.prefix + 'games/:id', settings.security.authorize, _this.getGame);
             console.log("Games routes registered");
         };
     }
