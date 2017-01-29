@@ -28,6 +28,8 @@ export class GameLobbyComponent {
         private Path: string;
         private gameId:any;
         public body:any;
+        public idPlayers :any;
+        public idPlayerInArray: boolean;
 
 
 
@@ -94,7 +96,15 @@ export class GameLobbyComponent {
                 //get the total players number
                 totPlayers = response.json().players.length;
                 games = response.json().players;
-                if (totPlayers < 4) {
+
+                
+                
+               //verificar se o próprio jogador não esta no array de jogo
+               if(this.idPlayerInArray=true) {
+
+                   alert("Já está no jogo");
+
+               }else if (totPlayers < 4) {
                     this.getGame(this.gameId);
                     this.userGames = [{player: player}];
                     this.body = JSON.stringify({ players: this.userGames, state: 'pending' });
@@ -153,7 +163,7 @@ export class GameLobbyComponent {
             response => {
 
                 totPlayers = response.json().players.length;
-               
+
                 if (response.json().players.length < 4) {
                     this.userGames = response.json().players;
                     console.log(this.userGames);
@@ -191,6 +201,27 @@ export class GameLobbyComponent {
                 console.log(error.text());
             }
             );
+
+    }
+
+    getIdPlayersGame(userGames: any){
+
+        
+
+        this.idPlayers=userGames.keys('uid');
+
+        return this.idPlayers;
+
+    }
+    compareArrayPlayers(idPlayers : any, uid:any){
+
+        for (var i = 0; i >= idPlayers.length; i++) {
+            if(uid == idPlayers[i]) {
+                this.idPlayerInArray= true;
+            }
+            this.idPlayerInArray= false;
+        }
+
 
     }
 
