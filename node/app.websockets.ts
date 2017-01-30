@@ -18,6 +18,24 @@ export class WebSocketServer {
             client.broadcast.emit('players', Date.now() + ': A new player has arrived');
             client.on('chat', (data) => this.io.emit('chat', data));
             
+            client.on('chatGame', (msgData) => {
+
+                client.join(msgData.id);
+                client.emit('chatGame', msgData.name + ': ' + msgData.msg);
+                client.to(msgData.id).emit('chatGame', msgData.name + ': ' + msgData.msg);
+
+            });
+
+            client.on('gameNotification', (msgData) => {
+                var sessionid = client.id;
+
+                client.join(msgData.id);
+                client.emit('gameNotification', msgData.name + ': Welcome to game Room ' + msgData.id);
+                client.broadcast.to(msgData.id).emit('gameNotification', Date.now() + ': ' + msgData.name + ' has arrived');
+
+
+            });
+
             //Extra Exercise
             client.emit('board', this.board);
             client.on('clickElement', (indexElement) => {

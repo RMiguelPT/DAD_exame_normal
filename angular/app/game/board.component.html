@@ -5,7 +5,7 @@
                 <div class="panel-title">SUECA - GAME BOARD</div>
                 
             </div>     
-
+ <h4>Game ID: {{id}}</h4>
             <div style="padding-top:30px;  background-color: green" class="panel-body" >
                 <!--<div class="container">-->
                 <div class="col-md-12" style="text-align: center; border:2px solid">
@@ -64,11 +64,9 @@
                 </div>
                 <hr>
                 <div>
-                    <chat-control></chat-control>
+                    <gameChat [idGame] = "id"></gameChat>
                 </div>
-                <div>
-                    <notification-panel></notification-panel>
-                </div>
+              
                 
             </div>                    
         </div>  

@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var card_component_1 = require("./game/card.component");
+var gamechat_component_1 = require("./game/gamechat.component");
 var deck_component_1 = require("./game/deck.component");
 //import { Authentication } from '../../node/app.authentication';
 var newGame_component_1 = require("./game/newGame.component");
@@ -51,7 +52,8 @@ AppModule = __decorate([
             newGame_component_1.NewGameComponent,
             gameHistory_component_1.GameHistoryComponent,
             deck_component_1.DeckComponent,
-            card_component_1.CardComponent
+            card_component_1.CardComponent,
+            gamechat_component_1.GameChatComponent,
         ],
         providers: [websocket_service_1.WebSocketService, authentication_service_1.AuthenticationService, validation_service_1.ValidationService, game_service_1.GameService],
         bootstrap: [app_component_1.AppComponent]

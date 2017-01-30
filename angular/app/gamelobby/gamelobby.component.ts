@@ -100,11 +100,11 @@ export class GameLobbyComponent {
                 
                 
                //verificar se o próprio jogador não esta no array de jogo
-               if(this.idPlayerInArray=true) {
+               if(this.idPlayerInArray==true) {
 
                    alert("Já está no jogo");
 
-               }else if (totPlayers < 4) {
+               }else  if (totPlayers < 4) {
                     this.getGame(this.gameId);
                     this.userGames = [{player: player}];
                     this.body = JSON.stringify({ players: this.userGames, state: 'pending' });
@@ -142,7 +142,7 @@ export class GameLobbyComponent {
                 }
         },
             error => {
-                //alert(error.text());
+                
                 console.log(error.text());
             }
             );       

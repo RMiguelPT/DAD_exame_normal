@@ -1,4 +1,5 @@
 import { CardComponent } from './game/card.component';
+import { GameChatComponent } from "./game/gamechat.component";
 import { DeckComponent } from './game/deck.component';
 //import { Authentication } from '../../node/app.authentication';
 import { NewGameComponent } from "./game/newGame.component";
@@ -42,7 +43,8 @@ import { AuthenticationService } from './_services/authentication.service';
                    NewGameComponent,
                    GameHistoryComponent,
                    DeckComponent,
-                   CardComponent
+                   CardComponent,
+                   GameChatComponent,
                     ],
   providers:    [ WebSocketService, AuthenticationService, ValidationService, GameService],
   bootstrap:    [ AppComponent ]

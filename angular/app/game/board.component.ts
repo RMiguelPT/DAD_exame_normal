@@ -3,6 +3,7 @@ import {WebSocketService } from '../notifications/websocket.service';
 import { NewGameComponent } from './../game/newGame.component';
 import { GameService } from "./../_services/game.service";
 import { elementAt } from 'rxjs/operator/elementAt';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -20,13 +21,25 @@ export class BoardComponent implements OnInit{
     public player3Avatar: any;
     public player4Name='';
     public player4Avatar: any;
+    private subscriber: any; 
+    public id: number;
 
-    constructor(private websocketService: WebSocketService, private gameService: GameService ) {
+
+      
+    constructor(private websocketService: WebSocketService, private gameService: GameService, private route: ActivatedRoute,
+        private router: Router ) {
        
     }
 
     ngOnInit() {
-        this.elementos = [];
+       // get URL parameters
+        this.subscriber = this.route
+            .params
+            .subscribe(params => {
+
+                this.id = params['id'];
+
+            });
         this.websocketService.getBoardMessages().subscribe((m:any) => {
             console.log(m);
             this.elementos = m;

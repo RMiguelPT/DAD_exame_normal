@@ -42,6 +42,22 @@ export class WebSocketService {
     getPlayersMessagesGame(): Observable<any> {
         return this.listenOnChannel('players');
     }
+
+    sendGameChatMessage(msgData: any) {
+        this.socket.emit('chatGame', msgData);
+    }
+
+    sendGamePlayersMessage(msgData: any) {
+        this.socket.emit('gameNotification', msgData);
+    }
+
+      getGameChatMessages(): Observable<any> {
+        return this.listenOnChannel('chatGame');
+    }
+
+    getGamePlayersMessages(): Observable<any> {
+        return this.listenOnChannel('gameNotification');
+    }
     
 
     private listenOnChannel(channel: string): Observable<any> {

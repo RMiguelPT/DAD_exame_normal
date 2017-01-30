@@ -78,7 +78,7 @@ var GameLobbyComponent = (function () {
             totPlayers = response.json().players.length;
             games = response.json().players;
             //verificar se o próprio jogador não esta no array de jogo
-            if (_this.idPlayerInArray = true) {
+            if (_this.idPlayerInArray == true) {
                 alert("Já está no jogo");
             }
             else if (totPlayers < 4) {
@@ -116,7 +116,6 @@ var GameLobbyComponent = (function () {
                 alert('TOTAL PLAYERS MAXED OUT');
             }
         }, function (error) {
-            //alert(error.text());
             console.log(error.text());
         });
         console.log(gameId);
