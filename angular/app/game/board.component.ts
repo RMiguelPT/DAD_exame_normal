@@ -22,8 +22,8 @@ export class BoardComponent implements OnInit{
     public player4Name='';
     public player4Avatar: any;
     private subscriber: any; 
-    public id: number;
-
+    public id: any;
+    public game: any;
 
       
     constructor(private websocketService: WebSocketService, private gameService: GameService, private route: ActivatedRoute,
@@ -44,19 +44,47 @@ export class BoardComponent implements OnInit{
             console.log(m);
             this.elementos = m;
         });
-         this.getCreatorName();
-         this.getCreatorAvatar();
-         this.getPlayer2Name();
-         this.getPlayer2Avatar();
-         this.getPlayer3Name();
-         this.getPlayer3Avatar();
-         this.getPlayer4Name();
-         this.getPlayer4Avatar();
+
+
+        this.websocketService.joinGameMessages().subscribe((m: any) => {
+            this.game =  m
+
+            this.creatorName = m.players[0].name;
+            this.creatorAvatar = m.players[0].avatar;
+            if(m.players[1] != undefined){
+                this.player2Name = m.players[1].name;
+            this.player2Avatar = m.players[1].avatar;
+            }
+             if(m.players[2] != undefined){
+                this.player3Name = m.players[2].name;
+            this.player3Avatar = m.players[2].avatar;
+            }
+             if(m.players[3] != undefined){
+                this.player4Name = m.players[3].name;
+            this.player4Avatar = m.players[3].avatar;
+            }
+            
+            
+            
+            
+            
+        });
+        this.websocketService.postJoinGame({ id: this.id, msg: 'Entrei', name: sessionStorage.getItem('name'), idPlayer: sessionStorage.getItem('_id') });
+        
+        // this.getCreatorName();
+        // this.getCreatorAvatar();
+        // this.getPlayer2Name();
+        // this.getPlayer2Avatar();
+        // this.getPlayer3Name();
+        // this.getPlayer3Avatar();
+        // this.getPlayer4Name();
+        // this.getPlayer4Avatar();
 
     }
     
     clickElemento(index: number){
         this.websocketService.sendClickElementMessage(index);
+        console.log(this.game);
     }
 
     getColor(elemento: number){

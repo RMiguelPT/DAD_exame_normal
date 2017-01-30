@@ -1,5 +1,7 @@
 "use strict";
 var io = require('socket.io');
+var mongodb = require('mongodb');
+var app_database_1 = require("./app.database");
 var WebSocketServer = (function () {
     function WebSocketServer() {
         var _this = this;
@@ -21,6 +23,19 @@ var WebSocketServer = (function () {
                     client.join(msgData.id);
                     client.emit('gameNotification', msgData.name + ': Welcome to game Room ' + msgData.id);
                     client.broadcast.to(msgData.id).emit('gameNotification', Date.now() + ': ' + msgData.name + ' has arrived');
+                });
+                client.on('gameJoin', function (msgData) {
+                    client.join(msgData.id);
+                    var id = new mongodb.ObjectID(msgData.id);
+                    app_database_1.databaseConnection.db.collection('games')
+                        .findOne({
+                        _id: id
+                    })
+                        .then(function (game) {
+                        console.log(game);
+                        client.emit('gameJoin', game);
+                        client.broadcast.to(msgData.id).emit('gameJoin', game);
+                    });
                 });
                 //Extra Exercise
                 client.emit('board', _this.board);
@@ -49,3 +64,4 @@ var WebSocketServer = (function () {
 }());
 exports.WebSocketServer = WebSocketServer;
 ;
+//# sourceMappingURL=app.websockets.js.map

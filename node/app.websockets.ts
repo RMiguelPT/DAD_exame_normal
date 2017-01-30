@@ -1,4 +1,6 @@
 const io = require('socket.io');
+const mongodb = require('mongodb');
+import {databaseConnection as database} from './app.database';
 
 export class WebSocketServer {
     public board: number[] = [];
@@ -36,6 +38,22 @@ export class WebSocketServer {
 
             });
 
+          client.on('gameJoin', (msgData) => {
+                        client.join(msgData.id);
+                       
+                        var id = new mongodb.ObjectID(msgData.id);
+                       database.db.collection('games')
+                    .findOne({
+                        _id: id
+                    })
+                    .then(game => {
+
+                        console.log(game);
+                        
+                         client.emit('gameJoin', game);
+                        client.broadcast.to(msgData.id).emit('gameJoin', game);
+            });
+  });
             //Extra Exercise
             client.emit('board', this.board);
             client.on('clickElement', (indexElement) => {

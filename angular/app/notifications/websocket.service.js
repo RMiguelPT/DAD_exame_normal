@@ -51,6 +51,12 @@ var WebSocketService = (function () {
     WebSocketService.prototype.getGamePlayersMessages = function () {
         return this.listenOnChannel('gameNotification');
     };
+    WebSocketService.prototype.joinGameMessages = function () {
+        return this.listenOnChannel('gameJoin');
+    };
+    WebSocketService.prototype.postJoinGame = function (msgData) {
+        this.socket.emit('gameJoin', msgData);
+    };
     WebSocketService.prototype.listenOnChannel = function (channel) {
         var _this = this;
         return new Observable_1.Observable(function (observer) {

@@ -36,17 +36,36 @@ var BoardComponent = (function () {
             console.log(m);
             _this.elementos = m;
         });
-        this.getCreatorName();
-        this.getCreatorAvatar();
-        this.getPlayer2Name();
-        this.getPlayer2Avatar();
-        this.getPlayer3Name();
-        this.getPlayer3Avatar();
-        this.getPlayer4Name();
-        this.getPlayer4Avatar();
+        this.websocketService.joinGameMessages().subscribe(function (m) {
+            _this.game = m;
+            _this.creatorName = m.players[0].name;
+            _this.creatorAvatar = m.players[0].avatar;
+            if (m.players[1] != undefined) {
+                _this.player2Name = m.players[1].name;
+                _this.player2Avatar = m.players[1].avatar;
+            }
+            if (m.players[2] != undefined) {
+                _this.player3Name = m.players[2].name;
+                _this.player3Avatar = m.players[2].avatar;
+            }
+            if (m.players[3] != undefined) {
+                _this.player4Name = m.players[3].name;
+                _this.player4Avatar = m.players[3].avatar;
+            }
+        });
+        this.websocketService.postJoinGame({ id: this.id, msg: 'Entrei', name: sessionStorage.getItem('name'), idPlayer: sessionStorage.getItem('_id') });
+        // this.getCreatorName();
+        // this.getCreatorAvatar();
+        // this.getPlayer2Name();
+        // this.getPlayer2Avatar();
+        // this.getPlayer3Name();
+        // this.getPlayer3Avatar();
+        // this.getPlayer4Name();
+        // this.getPlayer4Avatar();
     };
     BoardComponent.prototype.clickElemento = function (index) {
         this.websocketService.sendClickElementMessage(index);
+        console.log(this.game);
     };
     BoardComponent.prototype.getColor = function (elemento) {
         switch (elemento) {

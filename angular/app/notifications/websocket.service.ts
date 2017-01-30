@@ -59,6 +59,13 @@ export class WebSocketService {
         return this.listenOnChannel('gameNotification');
     }
     
+  joinGameMessages(): Observable<any> {
+        return this.listenOnChannel('gameJoin');
+    }
+
+   postJoinGame(msgData: any) {
+       this.socket.emit('gameJoin', msgData);
+    } 
 
     private listenOnChannel(channel: string): Observable<any> {
         return new Observable((observer:any) => {
