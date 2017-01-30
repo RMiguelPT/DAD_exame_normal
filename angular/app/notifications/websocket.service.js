@@ -39,6 +39,18 @@ var WebSocketService = (function () {
     WebSocketService.prototype.getPlayersMessagesGame = function () {
         return this.listenOnChannel('players');
     };
+    WebSocketService.prototype.sendGameChatMessage = function (msgData) {
+        this.socket.emit('chatGame', msgData);
+    };
+    WebSocketService.prototype.sendGamePlayersMessage = function (msgData) {
+        this.socket.emit('gameNotification', msgData);
+    };
+    WebSocketService.prototype.getGameChatMessages = function () {
+        return this.listenOnChannel('chatGame');
+    };
+    WebSocketService.prototype.getGamePlayersMessages = function () {
+        return this.listenOnChannel('gameNotification');
+    };
     WebSocketService.prototype.listenOnChannel = function (channel) {
         var _this = this;
         return new Observable_1.Observable(function (observer) {

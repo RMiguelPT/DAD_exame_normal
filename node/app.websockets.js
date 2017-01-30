@@ -11,6 +11,17 @@ var WebSocketServer = (function () {
                 client.emit('players', Date.now() + ': Welcome to DAD - Sueca');
                 client.broadcast.emit('players', Date.now() + ': A new player has arrived');
                 client.on('chat', function (data) { return _this.io.emit('chat', data); });
+                client.on('chatGame', function (msgData) {
+                    client.join(msgData.id);
+                    client.emit('chatGame', msgData.name + ': ' + msgData.msg);
+                    client.to(msgData.id).emit('chatGame', msgData.name + ': ' + msgData.msg);
+                });
+                client.on('gameNotification', function (msgData) {
+                    var sessionid = client.id;
+                    client.join(msgData.id);
+                    client.emit('gameNotification', msgData.name + ': Welcome to game Room ' + msgData.id);
+                    client.broadcast.to(msgData.id).emit('gameNotification', Date.now() + ': ' + msgData.name + ' has arrived');
+                });
                 //Extra Exercise
                 client.emit('board', _this.board);
                 client.on('clickElement', function (indexElement) {
@@ -38,4 +49,3 @@ var WebSocketServer = (function () {
 }());
 exports.WebSocketServer = WebSocketServer;
 ;
-//# sourceMappingURL=app.websockets.js.map
