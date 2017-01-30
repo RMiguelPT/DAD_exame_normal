@@ -77,7 +77,11 @@ var GameLobbyComponent = (function () {
             //get the total players number
             totPlayers = response.json().players.length;
             games = response.json().players;
-            if (totPlayers < 4) {
+            //verificar se o próprio jogador não esta no array de jogo
+            if (_this.idPlayerInArray = true) {
+                alert("Já está no jogo");
+            }
+            else if (totPlayers < 4) {
                 _this.getGame(_this.gameId);
                 _this.userGames = [{ player: player }];
                 _this.body = JSON.stringify({ players: _this.userGames, state: 'pending' });
@@ -157,6 +161,18 @@ var GameLobbyComponent = (function () {
             alert(error.text());
             console.log(error.text());
         });
+    };
+    GameLobbyComponent.prototype.getIdPlayersGame = function (userGames) {
+        this.idPlayers = userGames.keys('uid');
+        return this.idPlayers;
+    };
+    GameLobbyComponent.prototype.compareArrayPlayers = function (idPlayers, uid) {
+        for (var i = 0; i >= idPlayers.length; i++) {
+            if (uid == idPlayers[i]) {
+                this.idPlayerInArray = true;
+            }
+            this.idPlayerInArray = false;
+        }
     };
     GameLobbyComponent.prototype.logout = function (event, username, password) {
         this.authentication.logout();
