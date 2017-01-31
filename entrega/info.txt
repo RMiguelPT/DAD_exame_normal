@@ -1,0 +1,30 @@
+GRUPO 71
+
+Paulo Penicheiro - 2130628
+Ruben Bernardo - 2130364
+Álvaro Neves - 2120771
+
+Turno PL1 - Regime Pós-Laboral
+
+URL da App - 75.101.190.197:8080
+
+NOTA: packages instalados e outras informações em '/README.txt'
+
+
+/* ___________________________________________________________________________ */
+Funcionalidades implementadas:  [OK, PARCIAL, NÃO IMPLEMENTADO]    
+
+Jogo - PARCIAL (Criar baralho, criar mãos, associar os jogadores ao jogo)
+Top Ten - OK
+Identificação e Autorização - OK
+Histórico de Jogos – OK
+Game Lobby – OK
+Jogos Múltiplos - NÃO IMPLEMENTADO
+
+Outras Funcionalidades: 
+Bots - NÃO IMPLEMENTADO
+Serviços de Autenticação Externos - NAO IMPLEMENTADO
+Avatares - OK (não permite alterar, avatar por omissão)
+Chat Rooms - OK
+Repetição de Jogo - NÃO IMPLEMENTADO
+Mobile App - NÃO IMPLEMENTADO
